@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.example.demo.mapper.NovelMapper">
+
+    <!-- 通用查询映射结果 -->
+    <resultMap id="BaseResultMap" type="com.example.demo.entity.Novel">
+        <result column="novel_id" property="novel_id" />
+        <result column="type_name" property="type_name" />
+        <result column="type_url" property="type_url" />
+        <result column="novel_title" property="novel_title" />
+        <result column="novel_name" property="novel_name" />
+        <result column="novel_url" property="novel_url" />
+    </resultMap>
+
+</mapper>

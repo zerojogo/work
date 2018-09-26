@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.example.demo.mapper.DirectoryMapper">
+
+    <!-- 通用查询映射结果 -->
+    <resultMap id="BaseResultMap" type="com.example.demo.entity.Directory">
+        <result column="directory_id" property="directory_id" />
+        <result column="novel_id" property="novel_id" />
+        <result column="novel_directory" property="novel_directory" />
+        <result column="novel_directory_url" property="novel_directory_url" />
+        <result column="novel_directory_content" property="novel_directory_content" />
+    </resultMap>
+
+    <select id="directoryMax" parameterType="java.util.Map" resultType="java.lang.Integer">
+        select
+        IFNUll(max(sort),0)
+        from directory
+        where novel_title = #{novel_title}
+       <!-- <if test="bizDateStart != null and bizDateStart != ''">
+            and a.biz_date <![CDATA[>=]]> '${bizDateStart}'
+        </if>-->
+    </select>
+
+</mapper>
+
+
+
+
+
+
+
+
+
+
+
+
+
+

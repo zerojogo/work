@@ -1,0 +1,271 @@
+
+<!DOCTYPE html>
+
+<html lang="zh-CN" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=Edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0,user-scalable=no">
+
+    <!-- Start of Baidu Transcode -->
+    <meta http-equiv="Cache-Control" content="no-siteapp" />
+    <meta http-equiv="Cache-Control" content="no-transform" />
+    <meta name="applicable-device" content="pc,mobile">
+    <meta name="MobileOptimized" content="width"/>
+    <meta name="HandheldFriendly" content="true"/>
+    <meta name="mobile-agent" content="format=html5;url=https://www.jianshu.com/p/e1c80fbc4b74">
+    <!-- End of Baidu Transcode -->
+
+    <meta name="description"  content="... 成年后有两种人 一种是成熟，一种是老。 然而现在大多数人俨然已经成为后者。 年纪轻轻，却总是怨天尤人，唉声叹气；为现状焦虑，却没有勇气和毅力去改变自己；做任何事都是三分钟热度，坚持最多的事情就是坚持不下去。 现在的你是否也像这样：生活习惯凌乱，整日浑浑噩噩，为未来焦虑，但依旧毫无方向和意义地虚度时光。曾经以为做人就要及时行乐，享受当下，可当懒散成了习惯，不自律成了生活的常态，我却越来...">
+
+    <meta name="360-site-verification" content="604a14b53c6b871206001285921e81d8" />
+    <meta property="wb:webmaster" content="294ec9de89e7fadb" />
+    <meta property="qc:admins" content="104102651453316562112116375" />
+    <meta property="qc:admins" content="11635613706305617" />
+    <meta property="qc:admins" content="1163561616621163056375" />
+    <meta name="google-site-verification" content="cV4-qkUJZR6gmFeajx_UyPe47GW9vY6cnCrYtCHYNh4" />
+    <meta name="google-site-verification" content="HF7lfF8YEGs1qtCE-kPml8Z469e2RHhGajy6JPVy5XI" />
+    <meta http-equiv="mobile-agent" content="format=html5; url=https://www.jianshu.com/p/e1c80fbc4b74">
+
+    <!-- Apple -->
+    <meta name="apple-mobile-web-app-title" content="简书">
+
+    <!--  Meta for Smart App Banner -->
+    <meta name="apple-itunes-app" content="app-id=888237539, app-argument=jianshu://notes/30458815">
+    <!-- End -->
+
+    <!--  Meta for Twitter Card -->
+    <meta content="summary" property="twitter:card">
+    <meta content="@jianshucom" property="twitter:site">
+    <meta content="一个人自律到极致，到底有多可怕？" property="twitter:title">
+    <meta content="... 成年后有两种人 一种是成熟，一种是老。 然而现在大多数人俨然已经成为后者。 年纪轻轻，却总是怨天尤人，唉声叹气；为现状焦虑，却没有勇气和毅力去改变自己；做任何事都是三..." property="twitter:description">
+    <meta content="https://www.jianshu.com/p/e1c80fbc4b74" property="twitter:url">
+    <!-- End -->
+
+    <!--  Meta for OpenGraph -->
+    <meta property="fb:app_id" content="865829053512461">
+    <meta property="og:site_name" content="简书">
+    <meta property="og:title" content="一个人自律到极致，到底有多可怕？">
+    <meta property="og:type" content="article">
+    <meta property="og:url" content="https://www.jianshu.com/p/e1c80fbc4b74">
+    <meta property="og:description" content="... 成年后有两种人 一种是成熟，一种是老。 然而现在大多数人俨然已经成为后者。 年纪轻轻，却总是怨天尤人，唉声叹气；为现状焦虑，却没有勇气和毅力去改变自己；做任何事都是三分钟热度，坚持最多的...">
+    <!-- End -->
+
+    <!--  Meta for Facebook Applinks -->
+    <meta property="al:ios:url" content="jianshu://notes/30458815" />
+    <meta property="al:ios:app_store_id" content="888237539" />
+    <meta property="al:ios:app_name" content="简书" />
+
+    <meta property="al:android:url" content="jianshu://notes/30458815" />
+    <meta property="al:android:package" content="com.jianshu.haruki" />
+    <meta property="al:android:app_name" content="简书" />
+    <!-- End -->
+
+    <title>一个人自律到极致，到底有多可怕？ - 简书</title>
+
+    <meta name="csrf-param" content="authenticity_token" />
+    <meta name="csrf-token" content="bxWrWza2zKz89+lKWRPWru6ceILRWdyHs3Xzcjic372DcqvF79ZKxz/BzP3zzNtdq99Hh3+2uN1uyYtgTlgEXw==" />
+
+    <!--<link rel="stylesheet" media="all" href="demo.css" />
+
+    <link rel="stylesheet" media="all" href="demoa.css" />-->
+
+
+    <link rel="stylesheet" type="text/css" th:href="@{/static/demo.css}">
+    <link rel="stylesheet" type="text/css" th:href="@{/static/demoa.css}">
+
+    <script type="text/html" src="https://apps.bdimg.com/libs/jquery/2.1.4/jquery.min.js"></script>
+   <!-- <script>
+        $.ajax({
+            url: "www.baidu.com",
+            type: '',
+            dataType: '',
+            data: {
+
+            },
+            success: function(){
+
+            },
+            error: function(){
+
+            }
+        })
+    </script>-->
+
+    <!-- Start of 访问统计 -->
+    <script>
+        var _hmt = _hmt || [];
+        (function() {
+            var hm = document.createElement("script");
+            hm.src = "//hm.baidu.com/hm.js?0c0e9d9b1e7d617b3e6842e85b9fb068";
+            var s = document.getElementsByTagName("script")[0];
+            s.parentNode.insertBefore(hm, s);
+        })();
+    </script>
+
+    <!-- End of 访问统计 -->
+</head>
+
+<!-- 只给10%的用户添加代码 -->
+<body lang="zh-CN" class="reader-black-font">
+<!-- 全局顶部导航栏 -->
+<nav class="navbar navbar-default navbar-fixed-top" role="navigation">
+    <div class="width-limit">
+        <!-- 如果用户登录，显示下拉菜单 -->
+
+        <div id="view-mode-ctrl">
+        </div>
+        <div class="container">
+            <div class="navbar-header">
+                <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#menu" aria-expanded="false">
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                </button>
+            </div>
+            <div class="collapse navbar-collapse" id="menu">
+                <ul class="nav navbar-nav">
+                    <li class="tab ">
+                        <a href="/">
+                            <span class="menu-text">首页</span><i class="iconfont ic-navigation-discover menu-icon"></i>
+                        </a>            </li>
+                    <li class="search">
+                        <form target="_blank" action="/search" accept-charset="UTF-8" method="get"><input name="utf8" type="hidden" value="&#x2713;" />
+                            <input type="text" name="q" id="q" value="" autocomplete="off" placeholder="搜索" class="search-input" />
+                            <a class="search-btn" href="javascript:void(null)"><i class="iconfont ic-search"></i></a>
+                        </form>          </li>
+                </ul>
+            </div>
+        </div>
+    </div>
+</nav>
+
+
+<div class="note">
+    <a target="_blank" href="/apps/redirect?utm_source=side-banner-click" id="web-note-ad-fixed"><span class="close">&times;</span></a>
+    <div class="post">
+        <div class="article">
+            <h1 class="title">一个人自律到极致，到底有多可怕？</h1>
+        </div>
+        <!-- 如果是当前作者，加入编辑按钮 -->
+    </div>
+
+
+    <!-- 文章内容 -->
+    <div data-note-content class="show-content">
+        <div id="content" name="content">
+            <!--章节内容开始-->&nbsp;&nbsp;&nbsp;&nbsp;研究了半天，这颗青红二色珠子毫无反应，杨天苦苦思索，在他心中，一直觉得这珠子肯定有什么神奇的地方。<br />
+            <br />
+            &nbsp;&nbsp;&nbsp;&nbsp;杨天心中也渴望出现奇迹！<br />
+            <br />
+            &nbsp;&nbsp;&nbsp;&nbsp;对了，先前小石块是吸收了自己的血才会让自己感受到一股吸引力的。<br />
+            <br />
+            &nbsp;&nbsp;&nbsp;&nbsp;试一试？<br />
+            <br />
+            &nbsp;&nbsp;&nbsp;&nbsp;杨天想了一下，忍住疼痛，将左手掌的伤口又撕裂开，顿时，一滴滴的鲜血往只有两厘米直径大小的珠子上面滴去。<br />
+            <br />
+            &nbsp;&nbsp;&nbsp;&nbsp;奇迹真的出现了！<br />
+            <br />
+            &nbsp;&nbsp;&nbsp;&nbsp;在杨天不可思议的目光中，青红二色珠开始发出微弱的光芒，将杨天的鲜血全部吸收，并开始起伏不定！<br />
+            <br />
+            &nbsp;&nbsp;&nbsp;&nbsp;杨天的心中激动万分，他的心里承受能力一直很强大，如今发现这么颠覆无神论的现象发生，激动却是多于惊恐的。<br />
+            <br />
+            &nbsp;&nbsp;&nbsp;&nbsp;“哗！”，在杨明的密切注视下，青红二色珠化作一道白色的光芒，倏尔钻进了杨天的眉心中。<br />
+            <br />
+            &nbsp;&nbsp;&nbsp;&nbsp;杨天被吓了一跳，赶紧到镜子面前，看自己眉心处，却发现不了任何痕迹，那青红二色珠就这样钻进了杨天的脑海里面。<br />
+            <br />
+            &nbsp;&nbsp;&nbsp;&nbsp;杨天收复自己激动的情绪，闭上眼睛，试图沟通眉心处的神秘珠子。<br />
+            <br />
+            &nbsp;&nbsp;&nbsp;&nbsp;心情慢慢平静下来，杨天意识缓缓流淌着，来到了脑海深处。<br />
+            <br />
+            &nbsp;&nbsp;&nbsp;&nbsp;看到了！杨天仿佛进入了一个神奇的空间，神秘珠子在起伏不定。上面青红二色光芒闪烁，杨天试图意识融入这股光芒。<br />
+            <br />
+            &nbsp;&nbsp;&nbsp;&nbsp;“吼!”<br />
+            <br />
+            &nbsp;&nbsp;&nbsp;&nbsp;一阵震耳欲聋的吼叫声传出，那声音苍茫雄厚，充满威严，杨天感受到了自身的无比渺小，惊吓的意识一下子离开脑海，回过神来，身上的汗水将衣服都给浸透了。<br />
+            <br />
+            &nbsp;&nbsp;&nbsp;&nbsp;这是什么怪物的声音？<br />
+            <br />
+            &nbsp;&nbsp;&nbsp;&nbsp;杨天感觉到这是一个怪物的声音，充满霸气威严，像侏罗纪公园那上面的霸王龙声音与其相比，连之亿分之一都比不上。<br />
+            <br />
+            &nbsp;&nbsp;&nbsp;&nbsp;“呃…啊…”<br />
+            <br />
+            &nbsp;&nbsp;&nbsp;&nbsp;突然杨天脑海中一阵刺痛传来，这股刺痛，仿佛有什么东西要穿透出他的脑海，破体而出。<br />
+            <br />
+            &nbsp;&nbsp;&nbsp;&nbsp;“天地玄黄，宇宙洪荒…”，突然，一阵恢宏浩荡的声音在杨天脑海中响起，文字像是古老的纂书，杨天不认识，但是他却能理解其字的意思。<br />
+            <br />
+            &nbsp;&nbsp;&nbsp;&nbsp;青红神秘珠光芒渐淡，沉于杨天脑海深处，不再浮动，而此时的杨明则吃惊的整理自己的记忆。<br />
+            <br />
+            &nbsp;&nbsp;&nbsp;&nbsp;“炼体诀？”刚才脑海中声音过去，杨天记忆中便自动出现了这么一篇功法。<br />
+            <br />
+            &nbsp;&nbsp;&nbsp;&nbsp;杨天惊喜万分，仿佛被这一巨大的惊喜给镇住了！<br />
+            <br />
+            &nbsp;&nbsp;&nbsp;&nbsp;自己这体型，如果修炼了炼体诀，那肯定是能够恢复正常的。<br />
+            <br />
+            &nbsp;&nbsp;&nbsp;&nbsp;轻微舒了一口气，杨天整理起脑海中的功法。<br />
+            <br />
+            &nbsp;&nbsp;&nbsp;&nbsp;炼体诀，顾名思义，就是锤炼肉身，其他的都不修习，只在于挖掘身体内各器官血脉的潜力。<br />
+            <br />
+            &nbsp;&nbsp;&nbsp;&nbsp;炼皮！炼肉！炼筋！炼血！炼骨！<br />
+            <br />
+            &nbsp;&nbsp;&nbsp;&nbsp;从外到内，循坏俱进！<br />
+            <br />
+            &nbsp;&nbsp;&nbsp;&nbsp;炼皮，主要是通过药浴的疗效，强化自己的皮肤。炼皮到巅峰，小刀都割不开皮肤，堪称钢筋铁骨！不过所需要的药材都是很珍贵的，例如百年人参等。<br />
+            <br />
+            &nbsp;&nbsp;&nbsp;&nbsp;杨天苦恼不已，就算得了这么一篇神奇逆天的功法，自己却没有条件修炼。根本没有钱去买这些珍贵的药材。<br />
+            <br />
+            &nbsp;&nbsp;&nbsp;&nbsp;转身准备将桌子上面的工具等收起来放回原处，却不小心踩到了水盆。<br />
+            <br />
+            &nbsp;&nbsp;&nbsp;&nbsp;恩？<br />
+            <br />
+            &nbsp;&nbsp;&nbsp;&nbsp;杨天看着谁盆里面的半盆水，心中突然有种莫名其妙的想法。他将手指缓缓的插入水盆中，奇迹发生了！<br />
+            <br />
+            &nbsp;&nbsp;&nbsp;&nbsp;那半盆水放佛遇到了它们的王者，自动分开，根本不接触杨天的手指。等杨天放开心中的想法时候，水源又恢复原样，浸湿了杨天的手掌。<br />
+            <br />
+            &nbsp;&nbsp;&nbsp;&nbsp;控水？<br />
+            <br />
+            &nbsp;&nbsp;&nbsp;&nbsp;杨天心中震惊莫名，那脑海中的神秘二色珠，不会是传说中的龙珠吧？传说中龙乃是四海王者，掌控整个江河湖泊，掌控时令气节，甚至行阵布雨。传说它们的龙宫就建在海底深处，自动隔离水源，如常人在陆地上生活一般，天生拥有控水异能！<br />
+            <br />
+            &nbsp;&nbsp;&nbsp;&nbsp;华夏国，也自称为龙的传人，可见对龙的尊崇！<br />
+            <br />
+            &nbsp;&nbsp;&nbsp;&nbsp;杨天喜不自胜，玩水玩的不亦说乎。<br />
+            <br />
+            &nbsp;&nbsp;&nbsp;&nbsp;对了，既然我能这样控制水源，那海洋中还不是任意我走动的？杨天突然惊喜起来。海洋中的宝物太多了，自己有这样的能力，宝物还不是任意夺得！<br />
+            <br />
+            &nbsp;&nbsp;&nbsp;&nbsp;想到就去做，杨天吃完午饭后又来到了A县海滩。<br />
+            <br />
+            &nbsp;&nbsp;&nbsp;&nbsp;走到一处没有人注意的地方，杨天缓缓走下水去，渐渐将整个身子都完全浸泡在海洋中。<br />
+            <br />
+            &nbsp;&nbsp;&nbsp;&nbsp;“真的可以啊！海底真美啊！”，杨天处于海水中，双目居然能清晰的看到海水中的各种事物，各色小鱼虾，大螃蟹等。<br />
+            <br />
+            &nbsp;&nbsp;&nbsp;&nbsp;不能往前走了？杨天在海水中走到了大概离海滩十来米的距离，水深两米五的样子，便感觉到自己不能往前走了。潜意识告诉杨天，如果他再往深处走，这控水异能很可能就会失效。<br />
+            <br />
+            &nbsp;&nbsp;&nbsp;&nbsp;杨天思索了一会，便退了回来。<br />
+            <br />
+            &nbsp;&nbsp;&nbsp;&nbsp;脚底下一群龙虾张牙舞爪着，在海底缓缓游动，乍一看，有三十几只的样子。<br />
+            <br />
+            &nbsp;&nbsp;&nbsp;&nbsp;这些大龙虾浑身通红，每只大约都有近两斤重，两只大钳子挥舞着，甚至能剪掉人的手指，让人莫名心寒。<br />
+            <br />
+            &nbsp;&nbsp;&nbsp;&nbsp;不知道这些龙虾能卖多少钱？<br />
+            <br />
+            &nbsp;&nbsp;&nbsp;&nbsp;杨天心中想到。他知道像那些大的餐饮酒店，一个盘子只装一只龙虾，开价却开到了上千块钱。<br />
+            <br />
+            &nbsp;&nbsp;&nbsp;&nbsp;捉了两只大龙虾，杨天回到岸上，准备带回去问一下餐馆的回收价格。<br />
+            <br />
+            &nbsp;&nbsp;&nbsp;&nbsp;“唉…，小兄弟，等一等，你手上拿的是大龙虾么？”，突然一个声音从远处响起。<br />
+            <br />
+            &nbsp;&nbsp;&nbsp;&nbsp;杨天抬头看去，在沙滩上的一角，有着七八人，从身上装扮看起来，应该是来这里休闲游玩的。<br />
+            <br />
+            &nbsp;&nbsp;&nbsp;&nbsp;叫住杨天的是一位20几岁的青年，面容很是俊朗，穿着一身休闲白衬衫，一脸笑容的来到杨天的身边。<br />
+            <br />
+            &nbsp;&nbsp;&nbsp;&nbsp;“啧啧…极品大龙虾啊，看着色泽，纯正的海洋无污染龙虾”，青年看着杨天，道：“这两只龙虾能不能卖给我，200块钱一只”。<br />
+            <br />
+            &nbsp;&nbsp;&nbsp;&nbsp;杨天想了想，200块钱一只的价格好像不便宜了，便点了点头道：“可以”，便将两只张牙舞爪的大龙虾递了过去。<br />
+            <br />
+            &nbsp;&nbsp;&nbsp;&nbsp;青年拿出400块钱，递给了杨天，拿着两只大龙虾便高兴的回到了那一堆人群中。<!--章节内容结束-->
+        </div>
+
+    </div>
+</div>
+</body>
+</html>
