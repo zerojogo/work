@@ -5,6 +5,7 @@ import com.example.demo.entity.Directory;
 import com.example.demo.entity.Novel;
 import com.example.demo.service.IDirectoryService;
 import com.example.demo.service.INovelService;
+import com.example.demo.utils.CommonUtil;
 import com.example.demo.utils.IdWorkerUtils;
 import com.sun.javafx.collections.MappingChange;
 import jdk.nashorn.internal.runtime.regexp.joni.constants.EncloseType;
@@ -47,7 +48,7 @@ public class Demo  {
     @Transactional
     public void demo (){
         try {
-            String strUrl = "http://www.ouoou.com//ou_26680/21704506.html";
+            String strUrl = "http://www.ouoou.com";
             String stringBuffer = readHtml(strUrl);
 
             String str1 = "<div class="+'"'+"nav"+'"'+">"+'\n'+"<ul>";
@@ -58,8 +59,8 @@ public class Demo  {
 
             // 截取分类栏上的所有信息
             String strLiList = stringBuffer.toString().substring(index1+23,index2);
-            System.out.println(strLiList);
-            System.out.println("111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111");
+  //         System.out.println(strLiList);
+  //          System.out.println("111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111");
 
             String[] strLi = strLiList.split("\n");
             for (int i = 1; /*i<strLi.length - 1*/ i<2; i++){
@@ -76,15 +77,15 @@ public class Demo  {
                     // 截取每个分类信息里面的所有信息
                     String strRead = readHtml((String)vo.getValue());
                     String[] strings = strRead.split("</li><li>");
-                    for (int j = 1; j<strings.length-1 ;j++ ){
+                    for (int j = 1; /*j<strings.length-1*/ j<3 ;j++ ){
                         String string = strings[j];
                         String reg = "/"+'"';
                         String novelUrl = string.substring(9,string.indexOf(reg));
                         String novelTitle = string.substring(string.indexOf("target="+'"'+"_blank"+'"'+">")+16,string.indexOf("</a>"));
                         String novelName = string.substring(string.indexOf("</a>")+4);
-                        System.out.println(string);
-                        System.out.println(novelUrl+'-'+novelTitle+'-'+novelName);
-                        System.out.println("2222222222222222222222222222222222222222222222222222222222222222222222222222222222222222222");
+              //          System.out.println(string);
+              //          System.out.println(novelUrl+'-'+novelTitle+'-'+novelName);
+              //          System.out.println("2222222222222222222222222222222222222222222222222222222222222222222222222222222222222222222");
 
                         Map novelTitleMap = new HashMap();
                         novelTitleMap.put("novel_title",novelTitle);
@@ -102,11 +103,13 @@ public class Demo  {
                         novel.setNovel_title(novelTitle);
                         novel.setNovel_name(novelName);
                         novel.setNovel_url(novelUrl);
+                    //    novel.setCrt_date(CommonUtil.getDatebaseSysDate());
                         novelList.add(novel);
 
                         String directoryStr = readHtml("http://www.ouoou.com"+novelUrl+"/");
                         // 章节对应页面
                         List<Map<String,Object>> directorys = directory(directoryStr,novelTitle);
+                        int sort = 0;
                         for (Map<String, Object> directoryMap : directorys){
 
                             for (Map.Entry<String,Object> entry : directoryMap.entrySet()){
@@ -114,15 +117,18 @@ public class Demo  {
                                 entry.getValue();
                                 String chapterStr = readHtml("http://www.ouoou.com/"+entry.getKey());
                                 String novelDirectoryContent = chapter(chapterStr);
-                                System.out.println(novelDirectoryContent);
-                                System.out.println("5555555555555555555555555555555555555555555555555555555555555555555555555555555555555555555");
+                         //       System.out.println(novelDirectoryContent);
+                         //       System.out.println("5555555555555555555555555555555555555555555555555555555555555555555555555555555555555555555");
 
                                 Directory directory = new Directory();
                                 directory.setDirectory_id(IdWorkerUtils.getInstance().randomUUID());
                                 directory.setNovel_id(novalId);
+                                directory.setSort(sort++);
+                                directory.setNovel_title(novelTitle);
                                 directory.setNovel_directory((String)entry.getValue());
                                 directory.setNovel_directory_url((String)entry.getKey());
                                 directory.setNovel_directory_content(novelDirectoryContent);
+                           //     directory.setCrt_date(CommonUtil.getDatebaseSysDate());
                                 directoryList.add(directory);
 
                             }
@@ -131,7 +137,9 @@ public class Demo  {
                 }
                 demo.iNovelService.insertBatch(novelList);
                 demo.iDirectoryService.insertBatch(directoryList);
+                System.out.println("第一个"+i+"执行完成");
             }
+
         }catch (Exception e){
             e.printStackTrace();
         }
@@ -176,8 +184,8 @@ public class Demo  {
         // key 小说类型   value 小说类型对应的链接
         Map<String,Object> typeMap = new HashMap();
         typeMap.put(typeName,typeUrl);
-        System.out.println(typeName+'-'+typeUrl);
-        System.out.println("3333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333");
+   //     System.out.println(typeName+'-'+typeUrl);
+   //     System.out.println("3333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333");
 
         return typeMap;
     }
@@ -189,8 +197,8 @@ public class Demo  {
         String str4 = "</li></ul>"+'\n'+"<div ";
         int index7 = typeStr.indexOf(str4);
         typeStr.substring(index6+24,index7);
-        System.out.println( typeStr.substring(index6+24,index7));
-        System.out.println("4444444444444444444444444444444444444444444444444444444444444444444444444444444444444444444444444444");
+    //    System.out.println( typeStr.substring(index6+24,index7));
+    //    System.out.println("4444444444444444444444444444444444444444444444444444444444444444444444444444444444444444444444444444");
         String[] strings = typeStr.substring(index6+28,index7).split("</li><li>");
         return typeStr.substring(index6+24,index7);
     }
@@ -213,7 +221,7 @@ public class Demo  {
             //   directoryMap.put(str.substring(str.indexOf("href")+6,str.indexOf("title")-2),str.substring(str.indexOf('"'+">")+2));
             directoryMap.put(novelDirectoryUrl,novelDirectory);
             directoryList.add(directoryMap);
-            System.out.println(novelDirectoryUrl+'-'+novelDirectory);
+        //    System.out.println(novelDirectoryUrl+'-'+novelDirectory);
         }
         return directoryList;
 
