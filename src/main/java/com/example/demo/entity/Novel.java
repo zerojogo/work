@@ -1,5 +1,6 @@
 package com.example.demo.entity;
 
+import java.util.Date;
 import com.baomidou.mybatisplus.activerecord.Model;
 import java.io.Serializable;
 
@@ -9,7 +10,7 @@ import java.io.Serializable;
  * </p>
  *
  * @author zwf
- * @since 2018-09-21
+ * @since 2018-09-27
  */
 public class Novel extends Model<Novel> {
 
@@ -26,6 +27,8 @@ public class Novel extends Model<Novel> {
     private String novel_name;
 
     private String novel_url;
+
+    private Date crt_date;
 
     public Long getNovel_id() {
         return novel_id;
@@ -69,6 +72,13 @@ public class Novel extends Model<Novel> {
     public void setNovel_url(String novel_url) {
         this.novel_url = novel_url;
     }
+    public Date getCrt_date() {
+        return crt_date;
+    }
+
+    public void setCrt_date(Date crt_date) {
+        this.crt_date = crt_date;
+    }
 
     @Override
     protected Serializable pkVal() {
@@ -84,6 +94,7 @@ public class Novel extends Model<Novel> {
         ", novel_title=" + novel_title +
         ", novel_name=" + novel_name +
         ", novel_url=" + novel_url +
+        ", crt_date=" + crt_date +
         "}";
     }
 }

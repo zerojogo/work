@@ -6,9 +6,12 @@
     <resultMap id="BaseResultMap" type="com.example.demo.entity.Directory">
         <result column="directory_id" property="directory_id" />
         <result column="novel_id" property="novel_id" />
+        <result column="sort" property="sort" />
+        <result column="novel_title" property="novel_title" />
         <result column="novel_directory" property="novel_directory" />
         <result column="novel_directory_url" property="novel_directory_url" />
         <result column="novel_directory_content" property="novel_directory_content" />
+        <result column="crt_date" property="crt_date" />
     </resultMap>
 
     <select id="directoryMax" parameterType="java.util.Map" resultType="java.lang.Integer">

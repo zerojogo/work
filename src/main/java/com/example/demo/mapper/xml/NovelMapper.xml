@@ -10,6 +10,12 @@
         <result column="novel_title" property="novel_title" />
         <result column="novel_name" property="novel_name" />
         <result column="novel_url" property="novel_url" />
+        <result column="crt_date" property="crt_date" />
     </resultMap>
+
+    <select id="getMysqlDate" resultType="java.util.Date">
+        select
+        now()
+    </select>
 
 </mapper>

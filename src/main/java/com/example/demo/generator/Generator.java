@@ -21,7 +21,7 @@ public class Generator {
 
         // 全局配置
         GlobalConfig gc = new GlobalConfig();
-        gc.setOutputDir("E:\\MyProject\\src\\main\\java");
+        gc.setOutputDir("E:\\mywork");
         gc.setAuthor("zwf");
         gc.setFileOverride(true); // 是否覆盖同名文件
         gc.setActiveRecord(true); // 不需要 ActiveRecord 特性的请改为false
