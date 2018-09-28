@@ -1,6 +1,7 @@
 package com.example.demo.test;
 
 
+import ch.qos.logback.core.encoder.EchoEncoder;
 import com.example.demo.entity.Directory;
 import com.example.demo.entity.Novel;
 import com.example.demo.service.IDirectoryService;
@@ -8,6 +9,9 @@ import com.example.demo.service.INovelService;
 import com.example.demo.utils.CommonUtil;
 import com.example.demo.utils.IdWorkerUtils;
 import com.sun.javafx.collections.MappingChange;
+import freemarker.template.Configuration;
+import freemarker.template.DefaultObjectWrapper;
+import freemarker.template.Template;
 import jdk.nashorn.internal.runtime.regexp.joni.constants.EncloseType;
 import org.jsoup.Jsoup;
 import org.jsoup.select.Evaluator;
@@ -22,9 +26,7 @@ import org.springframework.web.bind.annotation.RestController;
 import javax.annotation.PostConstruct;
 import javax.lang.model.util.Elements;
 import javax.swing.text.Document;
-import java.io.BufferedReader;
-import java.io.InputStream;
-import java.io.InputStreamReader;
+import java.io.*;
 import java.net.URL;
 import java.net.URLConnection;
 import java.util.*;
@@ -59,8 +61,8 @@ public class Demo  {
 
             // 截取分类栏上的所有信息
             String strLiList = stringBuffer.toString().substring(index1+23,index2);
-  //         System.out.println(strLiList);
-  //          System.out.println("111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111");
+            //         System.out.println(strLiList);
+            //          System.out.println("111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111");
 
             String[] strLi = strLiList.split("\n");
             for (int i = 1; /*i<strLi.length - 1*/ i<2; i++){
@@ -70,6 +72,7 @@ public class Demo  {
                 Map<String,Object> typeMap = type(str);
                 List<Novel> novelList = new ArrayList<Novel>();
                 List<Directory> directoryList = new ArrayList<>();
+                List<Map<String,Object>> createHtmlList = new ArrayList<Map<String, Object>>();
                 for (Map.Entry<String,Object> vo : typeMap.entrySet()){
                     vo.getKey();
                     vo.getValue();
@@ -83,9 +86,9 @@ public class Demo  {
                         String novelUrl = string.substring(9,string.indexOf(reg));
                         String novelTitle = string.substring(string.indexOf("target="+'"'+"_blank"+'"'+">")+16,string.indexOf("</a>"));
                         String novelName = string.substring(string.indexOf("</a>")+4);
-              //          System.out.println(string);
-              //          System.out.println(novelUrl+'-'+novelTitle+'-'+novelName);
-              //          System.out.println("2222222222222222222222222222222222222222222222222222222222222222222222222222222222222222222");
+                        //          System.out.println(string);
+                        //          System.out.println(novelUrl+'-'+novelTitle+'-'+novelName);
+                        //          System.out.println("2222222222222222222222222222222222222222222222222222222222222222222222222222222222222222222");
 
                         Map novelTitleMap = new HashMap();
                         novelTitleMap.put("novel_title",novelTitle);
@@ -103,7 +106,7 @@ public class Demo  {
                         novel.setNovel_title(novelTitle);
                         novel.setNovel_name(novelName);
                         novel.setNovel_url(novelUrl);
-                    //    novel.setCrt_date(CommonUtil.getDatebaseSysDate());
+                        //    novel.setCrt_date(CommonUtil.getDatebaseSysDate());
                         novelList.add(novel);
 
                         String directoryStr = readHtml("http://www.ouoou.com"+novelUrl+"/");
@@ -117,8 +120,8 @@ public class Demo  {
                                 entry.getValue();
                                 String chapterStr = readHtml("http://www.ouoou.com/"+entry.getKey());
                                 String novelDirectoryContent = chapter(chapterStr);
-                         //       System.out.println(novelDirectoryContent);
-                         //       System.out.println("5555555555555555555555555555555555555555555555555555555555555555555555555555555555555555555");
+                                //       System.out.println(novelDirectoryContent);
+                                //       System.out.println("5555555555555555555555555555555555555555555555555555555555555555555555555555555555555555555");
 
                                 Directory directory = new Directory();
                                 directory.setDirectory_id(IdWorkerUtils.getInstance().randomUUID());
@@ -128,8 +131,25 @@ public class Demo  {
                                 directory.setNovel_directory((String)entry.getValue());
                                 directory.setNovel_directory_url((String)entry.getKey());
                                 directory.setNovel_directory_content(novelDirectoryContent);
-                           //     directory.setCrt_date(CommonUtil.getDatebaseSysDate());
+                                //     directory.setCrt_date(CommonUtil.getDatebaseSysDate());
                                 directoryList.add(directory);
+
+                                novel.setType_name(vo.getKey());
+                                novel.setType_url((String)vo.getValue());
+                                novel.setNovel_title(novelTitle);
+                                novel.setNovel_name(novelName);
+                                novel.setNovel_url(novelUrl);
+                                // 封装生成页面需要的数据
+                                Map createHtmlMap = new HashMap();
+                                createHtmlMap.put("type_name",vo.getKey());
+                                createHtmlMap.put("type_url",(String)vo.getValue());
+                                createHtmlMap.put("novel_name",novelName);
+                                createHtmlMap.put("novel_url",novelUrl);
+                                createHtmlMap.put("novel_title",novelTitle);
+                                createHtmlMap.put("novel_directory",(String)entry.getValue());
+                                createHtmlMap.put("novel_directory",(String)entry.getKey());
+                                createHtmlMap.put("novel_directory_content",novelDirectoryContent);
+                                createHtmlList.add(createHtmlMap);
 
                             }
                         }
@@ -137,6 +157,8 @@ public class Demo  {
                 }
                 demo.iNovelService.insertBatch(novelList);
                 demo.iDirectoryService.insertBatch(directoryList);
+                createHtml(createHtmlList);
+
                 System.out.println("第一个"+i+"执行完成");
             }
 
@@ -184,8 +206,8 @@ public class Demo  {
         // key 小说类型   value 小说类型对应的链接
         Map<String,Object> typeMap = new HashMap();
         typeMap.put(typeName,typeUrl);
-   //     System.out.println(typeName+'-'+typeUrl);
-   //     System.out.println("3333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333");
+        //     System.out.println(typeName+'-'+typeUrl);
+        //     System.out.println("3333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333");
 
         return typeMap;
     }
@@ -197,8 +219,8 @@ public class Demo  {
         String str4 = "</li></ul>"+'\n'+"<div ";
         int index7 = typeStr.indexOf(str4);
         typeStr.substring(index6+24,index7);
-    //    System.out.println( typeStr.substring(index6+24,index7));
-    //    System.out.println("4444444444444444444444444444444444444444444444444444444444444444444444444444444444444444444444444444");
+        //    System.out.println( typeStr.substring(index6+24,index7));
+        //    System.out.println("4444444444444444444444444444444444444444444444444444444444444444444444444444444444444444444444444444");
         String[] strings = typeStr.substring(index6+28,index7).split("</li><li>");
         return typeStr.substring(index6+24,index7);
     }
@@ -221,7 +243,7 @@ public class Demo  {
             //   directoryMap.put(str.substring(str.indexOf("href")+6,str.indexOf("title")-2),str.substring(str.indexOf('"'+">")+2));
             directoryMap.put(novelDirectoryUrl,novelDirectory);
             directoryList.add(directoryMap);
-        //    System.out.println(novelDirectoryUrl+'-'+novelDirectory);
+            //    System.out.println(novelDirectoryUrl+'-'+novelDirectory);
         }
         return directoryList;
 
@@ -232,5 +254,42 @@ public class Demo  {
         String novelDirectoryContent = chapterStr.substring(chapterStr.indexOf("<!--章节内容开始-->")+13,chapterStr.indexOf("<!--章节内容结束-->"));
         return novelDirectoryContent;
     }
+
+
+    // 生成页面
+    public void createHtml(List<Map<String,Object>> createHtmlList){
+        try {
+            Configuration configuration = new Configuration();
+            configuration.setDirectoryForTemplateLoading(new File("E:\\MyProject\\src\\main\\resources\\templates"));
+            configuration.setObjectWrapper(new DefaultObjectWrapper());
+            configuration.setDefaultEncoding("UTF-8");
+            for (Map map : createHtmlList){
+                // 获取或创建一个模板页面
+                Template template = configuration.getTemplate("template.html");
+
+              /*  // 页面数据
+                Map<String, Object> paramMap = new HashMap<String, Object>();*/
+
+                // 生成八位随机不重复数 作为页面名称
+                String s= UUID.randomUUID().toString();
+                s =  s.substring(0,8)+s.substring(9,13)+s.substring(14,18)+s.substring(19,23)+s.substring(24);
+                String url = s.substring(0, 12);
+                //    System.out.println(s.substring(0, 12));
+
+                Writer writer = new OutputStreamWriter(new FileOutputStream(url+".html"),"UTF-8");
+                template.process(map,writer);
+
+                System.out.println("生成成功");
+
+                IdWorkerUtils.getInstance().randomUUID();
+
+
+            }
+
+        }catch (Exception e){
+            e.printStackTrace();
+        }
+    }
+
 
 }
