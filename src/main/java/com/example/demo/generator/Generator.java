@@ -50,7 +50,7 @@ public class Generator {
         StrategyConfig strategy = new StrategyConfig();
       //  strategy.setTablePrefix(new String[] {"user_"}); // 此处可修改位表的前缀
         strategy.setNaming(NamingStrategy.nochange);
-        strategy.setInclude(new String[] {"novel","directory"});
+        strategy.setInclude(new String[] {"novel","directory","new_html"});
 
         mpg.setStrategy(strategy);
 
