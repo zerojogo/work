@@ -2,6 +2,9 @@ package com.example.demo.entity;
 
 import java.util.Date;
 import com.baomidou.mybatisplus.activerecord.Model;
+import com.baomidou.mybatisplus.annotations.TableId;
+import com.baomidou.mybatisplus.annotations.TableName;
+
 import java.io.Serializable;
 
 /**
@@ -12,10 +15,12 @@ import java.io.Serializable;
  * @author zwf
  * @since 2018-09-29
  */
+@TableName("new_html")
 public class New_html extends Model<New_html> {
 
     private static final long serialVersionUID = 1L;
 
+    @TableId("new_html_id")
     private Long new_html_id;
 
     private Integer sort;

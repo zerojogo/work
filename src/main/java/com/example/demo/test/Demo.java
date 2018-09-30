@@ -70,6 +70,7 @@ public class Demo  {
             //         System.out.println(strLiList);
             //          System.out.println("111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111");
 
+            System.out.println("开始解析");
             String[] strLi = strLiList.split("\n");
             for (int i = 1; /*i<strLi.length - 1*/ i<2; i++){
 
@@ -91,7 +92,7 @@ public class Demo  {
                         continue;
                     }
                     String[] strings = strRead.split("</li><li>");
-                    for (int j = 1; /*j<strings.length-1*/ j<3 ;j++ ){
+                    for (int j = 1; /*j<strings.length-1*/ j<4 ;j++ ){
                         String string = strings[j];
                         String reg = "/"+'"';
                         String novelUrl = string.substring(9,string.indexOf(reg));
@@ -122,75 +123,121 @@ public class Demo  {
 
                         String directoryStr = "";
                         try {
-                           directoryStr = readHtml("http://www.ouoou.com"+novelUrl+"/");
+                            directoryStr = readHtml("http://www.ouoou.com"+novelUrl+"/");
                         }catch (Exception e){
                             e.printStackTrace();
                             continue;
                         }
 
-                        // 章节对应页面
-                        List<Map<String,Object>> directorys = directory(directoryStr,novelTitle);
+                        EntityWrapper ew = new EntityWrapper();
+                        ew.setEntity(new Directory());
+                        List<Directory> directoryList1 = demo.iDirectoryService.selectList(ew.eq("novel_title",novelTitle).isNull("novel_directory"));
+                        List<Directory>  oldDirectorys = oldDirectory(directoryStr,novelTitle,directoryList1);
+                        if (!CollectionUtils.isEmpty(oldDirectorys)){
+                            for (Directory directory : oldDirectorys){
+                                String chapterStr = "";
+                                try {
+                                    chapterStr = readHtml("http://www.ouoou.com/"+directory.getNovel_directory_url());
+                                }catch (Exception e){
+                                    e.printStackTrace();
+                                    continue;
+                                }
+                                String novelDirectoryContent = chapter(chapterStr);
+                                directory.setDirectory_id(directory.getDirectory_id());
+                                directory.setNovel_directory_content(novelDirectoryContent);
+                                directory.setCrt_date(new Date());
+                                directoryList.add(directory);
+
+                                // 封装生成页面需要的数据
+                                Map createHtmlMap = new HashMap();
+                                createHtmlMap.put("type_name",vo.getKey());
+                                createHtmlMap.put("type_url",(String)vo.getValue());
+                                createHtmlMap.put("novel_name",novelName);
+                                createHtmlMap.put("novel_url",novelUrl);
+                                createHtmlMap.put("novel_title",novelTitle);
+                                createHtmlMap.put("novel_directory",directory.getNovel_directory());
+                                createHtmlMap.put("novel_directory_url",directory.getNovel_directory_url());
+                                createHtmlMap.put("novel_directory_content",novelDirectoryContent);
+                                createHtmlList.add(createHtmlMap);
+                                System.out.println("update");
+                            }
+                            demo.iDirectoryService.updateBatchById(directoryList);
+                            createHtml(createHtmlList);
+                        }
+
                         Map map = new HashMap();
                         map.put("novel_title",novelTitle);
                         int sort = demo.iDirectoryService.directoryMax(map); // 获取最大章节的顺序
-                    //    for (Map<String, Object> directoryMap : directorys){
-                            for (int k=0; k<directorys.size(); k++){
+
+                        // 章节对应页面
+                        List<Map<String,Object>> directorys = directory(directoryStr,novelTitle,sort);
+
+                        //    for (Map<String, Object> directoryMap : directorys){
+                        for (int k=0; k<directorys.size(); k++){
                             //    for (Map.Entry<String,Object> entry : directoryMap.entrySet()){
-                                    for (Map.Entry<String,Object> entry : directorys.get(k).entrySet()){
-                                        entry.getKey();
-                                        entry.getValue();
+                            for (Map.Entry<String,Object> entry : directorys.get(k).entrySet()){
+                                entry.getKey();
+                                entry.getValue();
 
-                                        String chapterStr = "";
-                                        try {
-                                            chapterStr = readHtml("http://www.ouoou.com/"+entry.getKey());
-                                        }catch (Exception e){
-                                            e.printStackTrace();
+                                String chapterStr = "";
+                                try {
+                                    chapterStr = readHtml("http://www.ouoou.com/"+entry.getKey());
+                                }catch (Exception e){
+                                    e.printStackTrace();
 
-                                            Directory directory = new Directory();
-                                            directory.setDirectory_id(IdWorkerUtils.getInstance().randomUUID());
-                                            directory.setNovel_id(novalId);
-                                            directory.setSort(sort++);
-                                            directory.setNovel_title(novelTitle);
-                                            directoryList.add(directory);
-                                            continue;
-                                        }
+                                    Directory directory = new Directory();
+                                    directory.setDirectory_id(IdWorkerUtils.getInstance().randomUUID());
+                                    directory.setNovel_id(novalId);
+                                    directory.setSort(sort++);
+                                    directory.setNovel_title(novelTitle);
+                                    directoryList.add(directory);
+                                    continue;
+                                }
 
-                                        String novelDirectoryContent = chapter(chapterStr);
-                                        //       System.out.println(novelDirectoryContent);
-                                        //       System.out.println("5555555555555555555555555555555555555555555555555555555555555555555555555555555555555555555");
+                                String novelDirectoryContent = chapter(chapterStr);
+                                //       System.out.println(novelDirectoryContent);
+                                       System.out.println("5555555555555555555555555555555555555555555555555555555555555555555555555555555555555555555");
 
-                                        Directory directory = new Directory();
-                                        directory.setDirectory_id(IdWorkerUtils.getInstance().randomUUID());
-                                        directory.setNovel_id(novalId);
-                                        directory.setSort(sort++);
-                                        directory.setNovel_title(novelTitle);
-                                        directory.setNovel_directory((String)entry.getValue());
-                                        directory.setNovel_directory_url((String)entry.getKey());
-                                        directory.setNovel_directory_content(novelDirectoryContent);
-                                        directory.setCrt_date(new Date());
-                                        directoryList.add(directory);
+                                Directory directory = new Directory();
+                                directory.setDirectory_id(IdWorkerUtils.getInstance().randomUUID());
+                                directory.setNovel_id(novalId);
+                                directory.setSort(sort++);
+                                directory.setNovel_title(novelTitle);
+                                directory.setNovel_directory((String)entry.getValue());
+                                directory.setNovel_directory_url((String)entry.getKey());
+                                directory.setNovel_directory_content(novelDirectoryContent);
+                                directory.setCrt_date(new Date());
+                                directoryList.add(directory);
 
-                                        // 封装生成页面需要的数据
-                                        Map createHtmlMap = new HashMap();
-                                        createHtmlMap.put("type_name",vo.getKey());
-                                        createHtmlMap.put("type_url",(String)vo.getValue());
-                                        createHtmlMap.put("novel_name",novelName);
-                                        createHtmlMap.put("novel_url",novelUrl);
-                                        createHtmlMap.put("novel_title",novelTitle);
-                                        createHtmlMap.put("novel_directory",(String)entry.getValue());
-                                        createHtmlMap.put("novel_directory_url",(String)entry.getKey());
-                                        createHtmlMap.put("novel_directory_content",novelDirectoryContent);
-                                        createHtmlList.add(createHtmlMap);
-                                    }
-                            //    }
+                                // 封装生成页面需要的数据
+                                Map createHtmlMap = new HashMap();
+                                createHtmlMap.put("type_name",vo.getKey());
+                                createHtmlMap.put("type_url",(String)vo.getValue());
+                                createHtmlMap.put("novel_name",novelName);
+                                createHtmlMap.put("novel_url",novelUrl);
+                                createHtmlMap.put("novel_title",novelTitle);
+                                createHtmlMap.put("novel_directory",(String)entry.getValue());
+                                createHtmlMap.put("novel_directory_url",(String)entry.getKey());
+                                createHtmlMap.put("novel_directory_content",novelDirectoryContent);
+                                createHtmlList.add(createHtmlMap);
                             }
-                     //   }
+                            //    }
+                        }
+                        //   }
                     }
                 }
-                demo.iNovelService.insertBatch(novelList);
-                demo.iDirectoryService.insertBatch(directoryList);
-                createHtml(createHtmlList);
-
+                if (!CollectionUtils.isEmpty(novelList) && !CollectionUtils.isEmpty(directoryList) && !CollectionUtils.isEmpty(createHtmlList)){
+                    demo.iNovelService.insertBatch(novelList);
+                    System.out.println("类型"+i+"执行完成");
+                }
+                if (!CollectionUtils.isEmpty(directoryList)){
+                    demo.iDirectoryService.insertBatch(directoryList);
+                    System.out.println("正文执行成功");
+                }
+                if (!CollectionUtils.isEmpty(createHtmlList)){
+                    createHtml(createHtmlList);
+                    System.out.println("页面生成成功");
+                }
                 System.out.println("第一个"+i+"执行完成");
             }
 
@@ -236,7 +283,7 @@ public class Demo  {
         Map<String,Object> typeMap = new HashMap();
         typeMap.put(typeName,typeUrl);
         //     System.out.println(typeName+'-'+typeUrl);
-        //     System.out.println("3333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333");
+             System.out.println("3333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333");
 
         return typeMap;
     }
@@ -255,30 +302,16 @@ public class Demo  {
     }
 
     // 截取所有的章节目录
-    public List<Map<String,Object>> directory(String directory,String novelTitle) throws Exception{
+    public List<Map<String,Object>> directory(String directory,String novelTitle,Integer sort) throws Exception{
         String line = directory.substring(directory.indexOf("<dd><a"),directory.indexOf("</a></dd>"+'\n'+"</dl>"));
         String[] directorys = line.split("</a></dd>");
         List<Map<String,Object>> directoryList = new ArrayList<>();
 
-        Map map = new HashMap();
+     /*   Map map = new HashMap();
         map.put("novel_title",novelTitle);
-        int integer = demo.iDirectoryService.directoryMax(map);
+        int integer = demo.iDirectoryService.directoryMax(map);*/
 
-        // 重新获取上一次没有获取到的信息
-        EntityWrapper ew = new EntityWrapper();
-        ew.setEntity(new New_html());
-        List<New_html> newHtmlList = demo.iNew_htmlService.selectList(ew.eq("novel_title",novelTitle).eq("novel_directory",null));
-        for (New_html newHtml : newHtmlList){
-            String str = directorys[newHtml.getSort()];
-            Map<String, Object> directoryMap = new HashMap<>();
-            String novelDirectoryUrl = str.substring(str.indexOf("href")+6,str.indexOf("title")-2);
-            String novelDirectory = str.substring(str.indexOf('"'+">")+2);
-            directoryMap.put(novelDirectoryUrl,novelDirectory);
-            directoryList.add(directoryMap);
-        }
-
-
-        for (int n = integer ; n<directorys.length ; n++){
+        for (int n = sort+1 ; n<directorys.length ; n++){
             String str = directorys[n];
             Map<String,Object> directoryMap = new HashMap<>();
             String novelDirectoryUrl = str.substring(str.indexOf("href")+6,str.indexOf("title")-2);
@@ -290,6 +323,30 @@ public class Demo  {
         }
         return directoryList;
 
+    }
+
+    // 重新获取上一次没有获取到的信息
+    public List<Directory> oldDirectory(String directory,String novelTitle,List<Directory> directoryList1) throws Exception{
+        String line = directory.substring(directory.indexOf("<dd><a"),directory.indexOf("</a></dd>"+'\n'+"</dl>"));
+        String[] directorys = line.split("</a></dd>");
+        List<Directory> directoryList = new ArrayList<>();
+
+       /* EntityWrapper ew = new EntityWrapper();
+        ew.setEntity(new New_html());
+        List<New_html> newHtmlList = demo.iNew_htmlService.selectList(ew.eq("novel_title",novelTitle).eq("novel_directory",null));*/
+        if (!CollectionUtils.isEmpty(directoryList1)){
+            for (Directory directory1 : directoryList1){
+                String str = directorys[directory1.getSort()];
+                //    Map<String, Object> directoryMap = new HashMap<>();
+                String novelDirectoryUrl = str.substring(str.indexOf("href")+6,str.indexOf("title")-2);
+                String novelDirectory = str.substring(str.indexOf('"'+">")+2);
+                //    directoryMap.put(novelDirectoryUrl,novelDirectory);
+                directory1.setNovel_directory_url(novelDirectoryUrl);
+                directory1.setNovel_directory(novelDirectory);
+                directoryList.add(directory1);
+            }
+        }
+        return directoryList;
     }
 
     // 截取章节内容
@@ -307,6 +364,7 @@ public class Demo  {
             configuration.setDirectoryForTemplateLoading(new File("E:\\mywork"));
             configuration.setObjectWrapper(new DefaultObjectWrapper());
             configuration.setDefaultEncoding("UTF-8");
+            List<New_html> newHtmlList = new ArrayList<>();
             for (Map map : createHtmlList){
                 // 获取或创建一个模板页面
                 Template template = configuration.getTemplate("template.html");
@@ -325,11 +383,14 @@ public class Demo  {
 
                 System.out.println("生成成功");
 
+                // 把新生成的页面信息,保存到数据库
                 IdWorkerUtils.getInstance().randomUUID();
                 New_html new_html = new New_html();
                 new_html.setNew_html_id(IdWorkerUtils.getInstance().randomUUID());
-
+                new_html.setNovel_directory_url(url+".html");
+                newHtmlList.add(new_html);
             }
+            demo.iNew_htmlService.insertBatch(newHtmlList);
 
         }catch (Exception e){
             e.printStackTrace();

@@ -2,6 +2,9 @@ package com.example.demo.entity;
 
 import java.util.Date;
 import com.baomidou.mybatisplus.activerecord.Model;
+import com.baomidou.mybatisplus.annotations.TableId;
+import com.baomidou.mybatisplus.annotations.TableName;
+
 import java.io.Serializable;
 
 /**
@@ -12,10 +15,12 @@ import java.io.Serializable;
  * @author zwf
  * @since 2018-09-27
  */
+@TableName("novel")
 public class Novel extends Model<Novel> {
 
     private static final long serialVersionUID = 1L;
 
+    @TableId("novel_id")
     private Long novel_id;
 
     private String type_name;
