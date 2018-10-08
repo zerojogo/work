@@ -9,7 +9,7 @@ import com.baomidou.mybatisplus.mapper.BaseMapper;
  * </p>
  *
  * @author zwf
- * @since 2018-09-29
+ * @since 2018-10-08
  */
 public interface New_htmlMapper extends BaseMapper<New_html> {
 
