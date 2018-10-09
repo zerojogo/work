@@ -1,5 +1,6 @@
 package com.example.demo.service.impl;
 
+import com.baomidou.mybatisplus.mapper.EntityWrapper;
 import com.example.demo.entity.Directory;
 import com.example.demo.mapper.DirectoryMapper;
 import com.example.demo.service.IDirectoryService;
@@ -22,10 +23,15 @@ public class DirectoryServiceImpl extends ServiceImpl<DirectoryMapper, Directory
 
     @Autowired
     private DirectoryMapper directoryMapper;
+    @Autowired
+    private IDirectoryService iDirectoryService;
 
     @Override
     public Integer directoryMax(Map map){
-        Integer integer = directoryMapper.directoryMax(map);
-        return integer;
+        EntityWrapper ew = new EntityWrapper<Directory>();
+        ew.setSqlSelect("IFNUll(max(sort),0)");
+        Long i = (Long)iDirectoryService.selectObj(ew);
+        //Integer integer = directoryMapper.directoryMax(map);
+        return i.intValue();
     }
 }
