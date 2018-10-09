@@ -4,12 +4,13 @@
 
     <!-- 通用查询映射结果 -->
     <resultMap id="BaseResultMap" type="com.example.demo.entity.Novel">
-        <result column="novel_id" property="novel_id" />
+        <id column="novel_id" property="novel_id" />
         <result column="type_name" property="type_name" />
         <result column="type_url" property="type_url" />
         <result column="novel_title" property="novel_title" />
         <result column="novel_name" property="novel_name" />
         <result column="novel_url" property="novel_url" />
+        <result column="novel_intro" property="novel_intro" />
         <result column="crt_date" property="crt_date" />
     </resultMap>
 

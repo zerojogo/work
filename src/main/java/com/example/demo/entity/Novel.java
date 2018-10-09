@@ -2,25 +2,20 @@ package com.example.demo.entity;
 
 import java.util.Date;
 import com.baomidou.mybatisplus.activerecord.Model;
-import com.baomidou.mybatisplus.annotations.TableId;
-import com.baomidou.mybatisplus.annotations.TableName;
-
 import java.io.Serializable;
 
 /**
  * <p>
- * 
+ *
  * </p>
  *
  * @author zwf
- * @since 2018-09-27
+ * @since 2018-10-09
  */
-@TableName("novel")
 public class Novel extends Model<Novel> {
 
     private static final long serialVersionUID = 1L;
 
-    @TableId("novel_id")
     private Long novel_id;
 
     private String type_name;
@@ -32,6 +27,8 @@ public class Novel extends Model<Novel> {
     private String novel_name;
 
     private String novel_url;
+
+    private String novel_intro;
 
     private Date crt_date;
 
@@ -77,6 +74,13 @@ public class Novel extends Model<Novel> {
     public void setNovel_url(String novel_url) {
         this.novel_url = novel_url;
     }
+    public String getNovel_intro() {
+        return novel_intro;
+    }
+
+    public void setNovel_intro(String novel_intro) {
+        this.novel_intro = novel_intro;
+    }
     public Date getCrt_date() {
         return crt_date;
     }
@@ -93,13 +97,14 @@ public class Novel extends Model<Novel> {
     @Override
     public String toString() {
         return "Novel{" +
-        "novel_id=" + novel_id +
-        ", type_name=" + type_name +
-        ", type_url=" + type_url +
-        ", novel_title=" + novel_title +
-        ", novel_name=" + novel_name +
-        ", novel_url=" + novel_url +
-        ", crt_date=" + crt_date +
-        "}";
+                "novel_id=" + novel_id +
+                ", type_name=" + type_name +
+                ", type_url=" + type_url +
+                ", novel_title=" + novel_title +
+                ", novel_name=" + novel_name +
+                ", novel_url=" + novel_url +
+                ", novel_intro=" + novel_intro +
+                ", crt_date=" + crt_date +
+                "}";
     }
 }
