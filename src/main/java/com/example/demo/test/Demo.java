@@ -73,7 +73,7 @@ public class Demo  {
 
             System.out.println("开始解析");
             String[] strLi = strLiList.split("\n");
-            for (int i = 1; /*i<strLi.length - 1*/ i<2; i++){
+            for (int i = 1; i<strLi.length - 1 ; i++){
 
                 // 截取单个分类信息
                 String str = strLi[i];
@@ -93,7 +93,7 @@ public class Demo  {
                         continue;
                     }
                     String[] strings = strRead.split("</li><li>");
-                    for (int j = 1; /*j<strings.length-1*/ j<2 ;j++ ){
+                    for (int j = 1; j<strings.length-1  ;j++ ){
                         String string = strings[j];
                         String reg = "/"+'"';
                         String oldNovelUrl = string.substring(9,string.indexOf(reg));  // 原网站的小说主页链接
