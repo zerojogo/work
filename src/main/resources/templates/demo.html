@@ -1,271 +1,242 @@
 
-<!DOCTYPE html>
-
-<html lang="zh-CN" xmlns:th="http://www.thymeleaf.org">
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
 <head>
-    <meta charset="utf-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=Edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0,user-scalable=no">
-
-    <!-- Start of Baidu Transcode -->
-    <meta http-equiv="Cache-Control" content="no-siteapp" />
+    <title>OU中文网_无弹窗广告热门小说免费在线阅读</title>
+    <meta name="keywords" content="无弹窗广告,全文在线阅读,无错小说,热门小说,OU中文网" />
+    <meta name="description" content="OU中文网提供最新最热门网络小说,无弹窗广告免费小说阅读,最新章节阅读,全文在线阅读,无错小说阅读" />
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
     <meta http-equiv="Cache-Control" content="no-transform" />
-    <meta name="applicable-device" content="pc,mobile">
-    <meta name="MobileOptimized" content="width"/>
-    <meta name="HandheldFriendly" content="true"/>
-    <meta name="mobile-agent" content="format=html5;url=https://www.jianshu.com/p/e1c80fbc4b74">
-    <!-- End of Baidu Transcode -->
-
-    <meta name="description"  content="... 成年后有两种人 一种是成熟，一种是老。 然而现在大多数人俨然已经成为后者。 年纪轻轻，却总是怨天尤人，唉声叹气；为现状焦虑，却没有勇气和毅力去改变自己；做任何事都是三分钟热度，坚持最多的事情就是坚持不下去。 现在的你是否也像这样：生活习惯凌乱，整日浑浑噩噩，为未来焦虑，但依旧毫无方向和意义地虚度时光。曾经以为做人就要及时行乐，享受当下，可当懒散成了习惯，不自律成了生活的常态，我却越来...">
-
-    <meta name="360-site-verification" content="604a14b53c6b871206001285921e81d8" />
-    <meta property="wb:webmaster" content="294ec9de89e7fadb" />
-    <meta property="qc:admins" content="104102651453316562112116375" />
-    <meta property="qc:admins" content="11635613706305617" />
-    <meta property="qc:admins" content="1163561616621163056375" />
-    <meta name="google-site-verification" content="cV4-qkUJZR6gmFeajx_UyPe47GW9vY6cnCrYtCHYNh4" />
-    <meta name="google-site-verification" content="HF7lfF8YEGs1qtCE-kPml8Z469e2RHhGajy6JPVy5XI" />
-    <meta http-equiv="mobile-agent" content="format=html5; url=https://www.jianshu.com/p/e1c80fbc4b74">
-
-    <!-- Apple -->
-    <meta name="apple-mobile-web-app-title" content="简书">
-
-    <!--  Meta for Smart App Banner -->
-    <meta name="apple-itunes-app" content="app-id=888237539, app-argument=jianshu://notes/30458815">
-    <!-- End -->
-
-    <!--  Meta for Twitter Card -->
-    <meta content="summary" property="twitter:card">
-    <meta content="@jianshucom" property="twitter:site">
-    <meta content="一个人自律到极致，到底有多可怕？" property="twitter:title">
-    <meta content="... 成年后有两种人 一种是成熟，一种是老。 然而现在大多数人俨然已经成为后者。 年纪轻轻，却总是怨天尤人，唉声叹气；为现状焦虑，却没有勇气和毅力去改变自己；做任何事都是三..." property="twitter:description">
-    <meta content="https://www.jianshu.com/p/e1c80fbc4b74" property="twitter:url">
-    <!-- End -->
-
-    <!--  Meta for OpenGraph -->
-    <meta property="fb:app_id" content="865829053512461">
-    <meta property="og:site_name" content="简书">
-    <meta property="og:title" content="一个人自律到极致，到底有多可怕？">
-    <meta property="og:type" content="article">
-    <meta property="og:url" content="https://www.jianshu.com/p/e1c80fbc4b74">
-    <meta property="og:description" content="... 成年后有两种人 一种是成熟，一种是老。 然而现在大多数人俨然已经成为后者。 年纪轻轻，却总是怨天尤人，唉声叹气；为现状焦虑，却没有勇气和毅力去改变自己；做任何事都是三分钟热度，坚持最多的...">
-    <!-- End -->
-
-    <!--  Meta for Facebook Applinks -->
-    <meta property="al:ios:url" content="jianshu://notes/30458815" />
-    <meta property="al:ios:app_store_id" content="888237539" />
-    <meta property="al:ios:app_name" content="简书" />
-
-    <meta property="al:android:url" content="jianshu://notes/30458815" />
-    <meta property="al:android:package" content="com.jianshu.haruki" />
-    <meta property="al:android:app_name" content="简书" />
-    <!-- End -->
-
-    <title>一个人自律到极致，到底有多可怕？ - 简书</title>
-
-    <meta name="csrf-param" content="authenticity_token" />
-    <meta name="csrf-token" content="bxWrWza2zKz89+lKWRPWru6ceILRWdyHs3Xzcjic372DcqvF79ZKxz/BzP3zzNtdq99Hh3+2uN1uyYtgTlgEXw==" />
-
-    <!--<link rel="stylesheet" media="all" href="demo.css" />
-
-    <link rel="stylesheet" media="all" href="demoa.css" />-->
-
-
-    <link rel="stylesheet" type="text/css" th:href="@{/static/demo.css}">
-    <link rel="stylesheet" type="text/css" th:href="@{/static/demoa.css}">
-
-    <script type="text/html" src="https://apps.bdimg.com/libs/jquery/2.1.4/jquery.min.js"></script>
-   <!-- <script>
-        $.ajax({
-            url: "www.baidu.com",
-            type: '',
-            dataType: '',
-            data: {
-
-            },
-            success: function(){
-
-            },
-            error: function(){
-
-            }
-        })
-    </script>-->
-
-    <!-- Start of 访问统计 -->
+    <link rel="alternate" media="handheld" href="#" />
+    <LINK href="../static/ouoou.css" type="text/css" rel="stylesheet" />
+    <script src="jquery.js"></script>
     <script>
-        var _hmt = _hmt || [];
-        (function() {
-            var hm = document.createElement("script");
-            hm.src = "//hm.baidu.com/hm.js?0c0e9d9b1e7d617b3e6842e85b9fb068";
-            var s = document.getElementsByTagName("script")[0];
-            s.parentNode.insertBefore(hm, s);
-        })();
+        $(document).ready(function(){
+            $("button").click(function(){
+                $.ajax({
+                    url:"d emo_test.txt"
+                    ,success:function(fewrgr){
+                        $("#div1").html("fewrgr");
+                    }});
+            });
+        });
     </script>
-
-    <!-- End of 访问统计 -->
+   <!-- <script language="javascript" type="text/javascript" src="ou.js"></script>-->
 </head>
-
-<!-- 只给10%的用户添加代码 -->
-<body lang="zh-CN" class="reader-black-font">
-<!-- 全局顶部导航栏 -->
-<nav class="navbar navbar-default navbar-fixed-top" role="navigation">
-    <div class="width-limit">
-        <!-- 如果用户登录，显示下拉菜单 -->
-
-        <div id="view-mode-ctrl">
-        </div>
-        <div class="container">
-            <div class="navbar-header">
-                <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#menu" aria-expanded="false">
-                    <span class="icon-bar"></span>
-                    <span class="icon-bar"></span>
-                    <span class="icon-bar"></span>
-                </button>
-            </div>
-            <div class="collapse navbar-collapse" id="menu">
-                <ul class="nav navbar-nav">
-                    <li class="tab ">
-                        <a href="/">
-                            <span class="menu-text">首页</span><i class="iconfont ic-navigation-discover menu-icon"></i>
-                        </a>            </li>
-                    <li class="search">
-                        <form target="_blank" action="/search" accept-charset="UTF-8" method="get"><input name="utf8" type="hidden" value="&#x2713;" />
-                            <input type="text" name="q" id="q" value="" autocomplete="off" placeholder="搜索" class="search-input" />
-                            <a class="search-btn" href="javascript:void(null)"><i class="iconfont ic-search"></i></a>
-                        </form>          </li>
-                </ul>
-            </div>
-        </div>
+<body>
+<div id="wrapper">
+    <div class="header">
+        <div class="header_logo"><a href="http://www.ouoou.com">OU中文网 </a></div>
+       <!-- <script>list_panel();</script>-->
     </div>
-</nav>
-
-
-<div class="note">
-    <a target="_blank" href="/apps/redirect?utm_source=side-banner-click" id="web-note-ad-fixed"><span class="close">&times;</span></a>
-    <div class="post">
-        <div class="article">
-            <h1 class="title">一个人自律到极致，到底有多可怕？</h1>
-        </div>
-        <!-- 如果是当前作者，加入编辑按钮 -->
+    <div class="nav">
+        <ul>
+            <li><a href="http://www.ouoou.com/">首　页</a></li>
+            <li><a href="http://www.ouoou.com/xuanhuanxiaoshuo/">玄幻小说</a></li>
+            <li><a href="http://www.ouoou.com/xiuzhenxiaoshuo/">修真小说</a></li>
+            <li><a href="http://www.ouoou.com/dushixiaoshuo/">都市小说</a></li>
+            <li><a href="http://www.ouoou.com/chuanyuexiaoshuo/">穿越小说</a></li>
+            <li><a href="http://www.ouoou.com/kongbuxiaoshuo/">恐怖小说</a></li>
+            <li><a href="http://www.ouoou.com/wangyouxiaoshuo/">网游小说</a></li>
+            <li><a href="http://www.ouoou.com/kehuanxiaoshuo/">科幻小说</a></li>
+            <li><a href="http://www.ouoou.com/qitaxiaoshuo/">其它类型</a></li>
+            <li><a href="http://www.ouoou.com/lastupdate/">全部小说</a></li>
+            <li><a href="http://m.ouoou.com" target="_blank">手机阅读</a></li>
+        </ul>
     </div>
-
-
-    <!-- 文章内容 -->
-    <div data-note-content class="show-content">
-        <div id="content" name="content">
-            <!--章节内容开始-->&nbsp;&nbsp;&nbsp;&nbsp;研究了半天，这颗青红二色珠子毫无反应，杨天苦苦思索，在他心中，一直觉得这珠子肯定有什么神奇的地方。<br />
-            <br />
-            &nbsp;&nbsp;&nbsp;&nbsp;杨天心中也渴望出现奇迹！<br />
-            <br />
-            &nbsp;&nbsp;&nbsp;&nbsp;对了，先前小石块是吸收了自己的血才会让自己感受到一股吸引力的。<br />
-            <br />
-            &nbsp;&nbsp;&nbsp;&nbsp;试一试？<br />
-            <br />
-            &nbsp;&nbsp;&nbsp;&nbsp;杨天想了一下，忍住疼痛，将左手掌的伤口又撕裂开，顿时，一滴滴的鲜血往只有两厘米直径大小的珠子上面滴去。<br />
-            <br />
-            &nbsp;&nbsp;&nbsp;&nbsp;奇迹真的出现了！<br />
-            <br />
-            &nbsp;&nbsp;&nbsp;&nbsp;在杨天不可思议的目光中，青红二色珠开始发出微弱的光芒，将杨天的鲜血全部吸收，并开始起伏不定！<br />
-            <br />
-            &nbsp;&nbsp;&nbsp;&nbsp;杨天的心中激动万分，他的心里承受能力一直很强大，如今发现这么颠覆无神论的现象发生，激动却是多于惊恐的。<br />
-            <br />
-            &nbsp;&nbsp;&nbsp;&nbsp;“哗！”，在杨明的密切注视下，青红二色珠化作一道白色的光芒，倏尔钻进了杨天的眉心中。<br />
-            <br />
-            &nbsp;&nbsp;&nbsp;&nbsp;杨天被吓了一跳，赶紧到镜子面前，看自己眉心处，却发现不了任何痕迹，那青红二色珠就这样钻进了杨天的脑海里面。<br />
-            <br />
-            &nbsp;&nbsp;&nbsp;&nbsp;杨天收复自己激动的情绪，闭上眼睛，试图沟通眉心处的神秘珠子。<br />
-            <br />
-            &nbsp;&nbsp;&nbsp;&nbsp;心情慢慢平静下来，杨天意识缓缓流淌着，来到了脑海深处。<br />
-            <br />
-            &nbsp;&nbsp;&nbsp;&nbsp;看到了！杨天仿佛进入了一个神奇的空间，神秘珠子在起伏不定。上面青红二色光芒闪烁，杨天试图意识融入这股光芒。<br />
-            <br />
-            &nbsp;&nbsp;&nbsp;&nbsp;“吼!”<br />
-            <br />
-            &nbsp;&nbsp;&nbsp;&nbsp;一阵震耳欲聋的吼叫声传出，那声音苍茫雄厚，充满威严，杨天感受到了自身的无比渺小，惊吓的意识一下子离开脑海，回过神来，身上的汗水将衣服都给浸透了。<br />
-            <br />
-            &nbsp;&nbsp;&nbsp;&nbsp;这是什么怪物的声音？<br />
-            <br />
-            &nbsp;&nbsp;&nbsp;&nbsp;杨天感觉到这是一个怪物的声音，充满霸气威严，像侏罗纪公园那上面的霸王龙声音与其相比，连之亿分之一都比不上。<br />
-            <br />
-            &nbsp;&nbsp;&nbsp;&nbsp;“呃…啊…”<br />
-            <br />
-            &nbsp;&nbsp;&nbsp;&nbsp;突然杨天脑海中一阵刺痛传来，这股刺痛，仿佛有什么东西要穿透出他的脑海，破体而出。<br />
-            <br />
-            &nbsp;&nbsp;&nbsp;&nbsp;“天地玄黄，宇宙洪荒…”，突然，一阵恢宏浩荡的声音在杨天脑海中响起，文字像是古老的纂书，杨天不认识，但是他却能理解其字的意思。<br />
-            <br />
-            &nbsp;&nbsp;&nbsp;&nbsp;青红神秘珠光芒渐淡，沉于杨天脑海深处，不再浮动，而此时的杨明则吃惊的整理自己的记忆。<br />
-            <br />
-            &nbsp;&nbsp;&nbsp;&nbsp;“炼体诀？”刚才脑海中声音过去，杨天记忆中便自动出现了这么一篇功法。<br />
-            <br />
-            &nbsp;&nbsp;&nbsp;&nbsp;杨天惊喜万分，仿佛被这一巨大的惊喜给镇住了！<br />
-            <br />
-            &nbsp;&nbsp;&nbsp;&nbsp;自己这体型，如果修炼了炼体诀，那肯定是能够恢复正常的。<br />
-            <br />
-            &nbsp;&nbsp;&nbsp;&nbsp;轻微舒了一口气，杨天整理起脑海中的功法。<br />
-            <br />
-            &nbsp;&nbsp;&nbsp;&nbsp;炼体诀，顾名思义，就是锤炼肉身，其他的都不修习，只在于挖掘身体内各器官血脉的潜力。<br />
-            <br />
-            &nbsp;&nbsp;&nbsp;&nbsp;炼皮！炼肉！炼筋！炼血！炼骨！<br />
-            <br />
-            &nbsp;&nbsp;&nbsp;&nbsp;从外到内，循坏俱进！<br />
-            <br />
-            &nbsp;&nbsp;&nbsp;&nbsp;炼皮，主要是通过药浴的疗效，强化自己的皮肤。炼皮到巅峰，小刀都割不开皮肤，堪称钢筋铁骨！不过所需要的药材都是很珍贵的，例如百年人参等。<br />
-            <br />
-            &nbsp;&nbsp;&nbsp;&nbsp;杨天苦恼不已，就算得了这么一篇神奇逆天的功法，自己却没有条件修炼。根本没有钱去买这些珍贵的药材。<br />
-            <br />
-            &nbsp;&nbsp;&nbsp;&nbsp;转身准备将桌子上面的工具等收起来放回原处，却不小心踩到了水盆。<br />
-            <br />
-            &nbsp;&nbsp;&nbsp;&nbsp;恩？<br />
-            <br />
-            &nbsp;&nbsp;&nbsp;&nbsp;杨天看着谁盆里面的半盆水，心中突然有种莫名其妙的想法。他将手指缓缓的插入水盆中，奇迹发生了！<br />
-            <br />
-            &nbsp;&nbsp;&nbsp;&nbsp;那半盆水放佛遇到了它们的王者，自动分开，根本不接触杨天的手指。等杨天放开心中的想法时候，水源又恢复原样，浸湿了杨天的手掌。<br />
-            <br />
-            &nbsp;&nbsp;&nbsp;&nbsp;控水？<br />
-            <br />
-            &nbsp;&nbsp;&nbsp;&nbsp;杨天心中震惊莫名，那脑海中的神秘二色珠，不会是传说中的龙珠吧？传说中龙乃是四海王者，掌控整个江河湖泊，掌控时令气节，甚至行阵布雨。传说它们的龙宫就建在海底深处，自动隔离水源，如常人在陆地上生活一般，天生拥有控水异能！<br />
-            <br />
-            &nbsp;&nbsp;&nbsp;&nbsp;华夏国，也自称为龙的传人，可见对龙的尊崇！<br />
-            <br />
-            &nbsp;&nbsp;&nbsp;&nbsp;杨天喜不自胜，玩水玩的不亦说乎。<br />
-            <br />
-            &nbsp;&nbsp;&nbsp;&nbsp;对了，既然我能这样控制水源，那海洋中还不是任意我走动的？杨天突然惊喜起来。海洋中的宝物太多了，自己有这样的能力，宝物还不是任意夺得！<br />
-            <br />
-            &nbsp;&nbsp;&nbsp;&nbsp;想到就去做，杨天吃完午饭后又来到了A县海滩。<br />
-            <br />
-            &nbsp;&nbsp;&nbsp;&nbsp;走到一处没有人注意的地方，杨天缓缓走下水去，渐渐将整个身子都完全浸泡在海洋中。<br />
-            <br />
-            &nbsp;&nbsp;&nbsp;&nbsp;“真的可以啊！海底真美啊！”，杨天处于海水中，双目居然能清晰的看到海水中的各种事物，各色小鱼虾，大螃蟹等。<br />
-            <br />
-            &nbsp;&nbsp;&nbsp;&nbsp;不能往前走了？杨天在海水中走到了大概离海滩十来米的距离，水深两米五的样子，便感觉到自己不能往前走了。潜意识告诉杨天，如果他再往深处走，这控水异能很可能就会失效。<br />
-            <br />
-            &nbsp;&nbsp;&nbsp;&nbsp;杨天思索了一会，便退了回来。<br />
-            <br />
-            &nbsp;&nbsp;&nbsp;&nbsp;脚底下一群龙虾张牙舞爪着，在海底缓缓游动，乍一看，有三十几只的样子。<br />
-            <br />
-            &nbsp;&nbsp;&nbsp;&nbsp;这些大龙虾浑身通红，每只大约都有近两斤重，两只大钳子挥舞着，甚至能剪掉人的手指，让人莫名心寒。<br />
-            <br />
-            &nbsp;&nbsp;&nbsp;&nbsp;不知道这些龙虾能卖多少钱？<br />
-            <br />
-            &nbsp;&nbsp;&nbsp;&nbsp;杨天心中想到。他知道像那些大的餐饮酒店，一个盘子只装一只龙虾，开价却开到了上千块钱。<br />
-            <br />
-            &nbsp;&nbsp;&nbsp;&nbsp;捉了两只大龙虾，杨天回到岸上，准备带回去问一下餐馆的回收价格。<br />
-            <br />
-            &nbsp;&nbsp;&nbsp;&nbsp;“唉…，小兄弟，等一等，你手上拿的是大龙虾么？”，突然一个声音从远处响起。<br />
-            <br />
-            &nbsp;&nbsp;&nbsp;&nbsp;杨天抬头看去，在沙滩上的一角，有着七八人，从身上装扮看起来，应该是来这里休闲游玩的。<br />
-            <br />
-            &nbsp;&nbsp;&nbsp;&nbsp;叫住杨天的是一位20几岁的青年，面容很是俊朗，穿着一身休闲白衬衫，一脸笑容的来到杨天的身边。<br />
-            <br />
-            &nbsp;&nbsp;&nbsp;&nbsp;“啧啧…极品大龙虾啊，看着色泽，纯正的海洋无污染龙虾”，青年看着杨天，道：“这两只龙虾能不能卖给我，200块钱一只”。<br />
-            <br />
-            &nbsp;&nbsp;&nbsp;&nbsp;杨天想了想，200块钱一只的价格好像不便宜了，便点了点头道：“可以”，便将两只张牙舞爪的大龙虾递了过去。<br />
-            <br />
-            &nbsp;&nbsp;&nbsp;&nbsp;青年拿出400块钱，递给了杨天，拿着两只大龙虾便高兴的回到了那一堆人群中。<!--章节内容结束-->
+   <!-- <div class="dahengfu"><script>list1();</script></div>-->
+    <div class="content">
+        <div class="list">
+            <div class="tit">热门小说</div>
+            <ul>
+                <li><a href="/ou_33442/" target="_blank">苍穹之上</a> 石三</li><li><a href="/ou_35060/" target="_blank">神话基因</a> 鱼跃冲顶</li><li><a href="/ou_832/" target="_blank">重生之商界大亨</a> 方片2</li><li><a href="/ou_31146/" target="_blank">在下慎二，有何贵干</a> 烂衣奸少</li><li><a href="/ou_34292/" target="_blank">唐残</a> 猫疲</li><li><a href="/ou_30020/" target="_blank">鬼村扎纸人</a> 轻尘一笑</li><li><a href="/ou_2602/" target="_blank">崩仙逆道</a> 雨暮浮屠</li><li><a href="/ou_35086/" target="_blank">造梦天师</a> 李鸿天</li><li><a href="/ou_33012/" target="_blank">电影世界穿梭门</a> 龙升云霄</li><li><a href="/ou_33526/" target="_blank">宠物小精灵之庭树</a> 轻泉流响</li><li><a href="/ou_35130/" target="_blank">长风万里尽汉歌</a> 汉风雄烈</li><li><a href="/ou_31092/" target="_blank">狂探</a> 旷海忘湖</li><li><a href="/ou_22146/" target="_blank">神级大镖客</a> 歪爽</li><li><a href="/ou_32734/" target="_blank">全能照妖镜</a> 草鱼L</li><li><a href="/ou_32232/" target="_blank">绝品小仙医</a> 白色企鹅</li><li><a href="/ou_4292/" target="_blank">非凡洪荒</a> 我自非凡</li><li><a href="/ou_30260/" target="_blank">天唐锦绣</a> 公子許</li><li><a href="/ou_30014/" target="_blank">我老婆是鬼王</a> 羽衣老吴</li><li><a href="/ou_33332/" target="_blank">我被系统托管了</a> 木恒</li><li><a href="/ou_31232/" target="_blank">校园最强护花系统</a> 罪洋.CS</li><li><a href="/ou_32090/" target="_blank">仙藏</a> 鬼雨</li><li><a href="/ou_27200/" target="_blank">修炼狂潮</a> 傅啸尘</li><li><a href="/ou_35074/" target="_blank">进球万岁</a> 猪头七</li><li><a href="/ou_3502/" target="_blank">龙纹战神</a> 苏月夕</li><li><a href="/ou_35008/" target="_blank">雷霆之主</a> 萧舒</li><li><a href="/ou_34928/" target="_blank">鬼片的世界</a> 方所</li><li><a href="/ou_34032/" target="_blank">捉鬼龙王之极品强少</a> 讲古书生</li><li><a href="/ou_34526/" target="_blank">无敌神龙养成系统</a> 九九三</li><li><a href="/ou_31144/" target="_blank">独断大明</a> 官笙</li><li><a href="/ou_30060/" target="_blank">龙魂特种兵</a> 东方小少</li><li><a href="/ou_34670/" target="_blank">妙医鸿途</a> 烟斗老哥</li><li><a href="/ou_33466/" target="_blank">我是仙凡</a> 百里玺</li><li><a href="/ou_33054/" target="_blank">大道朝天</a> 猫腻</li><li><a href="/ou_34490/" target="_blank">光头武僧在都市</a> 易伤秋者</li><li><a href="/ou_34534/" target="_blank">三国小霸王</a> 庄不周</li><li><a href="/ou_34730/" target="_blank">极拳暴君</a> 夜与雪</li><li><a href="/ou_32300/" target="_blank">帝少心头宠：国民校草是女生</a> 战七少</li><li><a href="/ou_33002/" target="_blank">无上崛起</a> 宝石猫</li><li><a href="/ou_34002/" target="_blank">崛起诸天</a> 冬日之阳</li><li><a href="/ou_15248/" target="_blank">我身体里的家伙们(王的韩娱)</a> 软软的金毛</li><li><a href="/ou_35080/" target="_blank">NBA超巨崛起</a> 飞翔的123</li><li><a href="/ou_34854/" target="_blank">进击的咸鱼少女</a> 幽萌之羽</li><li><a href="/ou_35244/" target="_blank">听说我死后超凶的</a> 老魔童</li><li><a href="/ou_8812/" target="_blank">修罗武神</a> 善良的蜜蜂</li><li><a href="/ou_22302/" target="_blank">抗日之特战兵王</a> 寂寞剑客</li><li><a href="/ou_34408/" target="_blank">末世：轮回重生</a> 水晶脑袋</li><li><a href="/ou_30808/" target="_blank">道君</a> 跃千愁</li><li><a href="/ou_3292/" target="_blank">乱清</a> 青玉狮子</li><li><a href="/ou_29522/" target="_blank">江山争雄</a> 丰玄机</li><li><a href="/ou_15530/" target="_blank">万古神帝</a> 飞天鱼</li><li><a href="/ou_34294/" target="_blank">还看今朝</a> 瑞根</li><li><a href="/ou_34620/" target="_blank">都市夜战魔法少男</a> 愿心不变</li><li><a href="/ou_35054/" target="_blank">黄庭道主</a> 妖僧花无缺</li><li><a href="/ou_33242/" target="_blank">红楼名侦探</a> 嗷世巅锋</li><li><a href="/ou_32260/" target="_blank">电弧中的高级玩家</a> 大脸猫脸大</li><li><a href="/ou_30350/" target="_blank">超维术士</a> 牧狐</li><li><a href="/ou_33544/" target="_blank">军事承包商</a> 小兵哥</li><li><a href="/ou_28460/" target="_blank">贴身御医</a> 零点风</li><li><a href="/ou_2100/" target="_blank">龙血战神</a> 风青阳</li><li><a href="/ou_34484/" target="_blank">书籍供应商</a> 胖乎乎的河马</li><li><a href="/ou_12102/" target="_blank">带着农场混异界</a> 明宇</li><li><a href="/ou_21040/" target="_blank">不死战神(腹黑的蚂蚁)</a> 腹黑的蚂蚁</li><li><a href="/ou_33462/" target="_blank">超级丧尸工厂</a> 雨水</li><li><a href="/ou_34452/" target="_blank">战国赵为王</a> 熙檬父</li><li><a href="/ou_21502/" target="_blank">我的千年僵尸女友</a> 天台迷雾</li><li><a href="/ou_33474/" target="_blank">太初</a> 高楼大厦</li><li><a href="/ou_1126/" target="_blank">赘婿</a> 愤怒的香蕉</li><li><a href="/ou_34750/" target="_blank">恶魔就在身边</a> 汉宝</li><li><a href="/ou_33502/" target="_blank">狼牙兵王</a> 蝼蚁望天</li><li><a href="/ou_12628/" target="_blank">腐烂国度之活下去</a> 奇异果008</li><li><a href="/ou_32868/" target="_blank">华娱之闪耀巨星</a> 万乘北宸</li><li><a href="/ou_34666/" target="_blank">变身灵山大师姐</a> 绫将军</li><li><a href="/ou_34880/" target="_blank">重生之我是我二大爷</a> 蠢蠢凡愚QD</li><li><a href="/ou_34464/" target="_blank">重生之御医</a> 夜的邂逅</li><li><a href="/ou_750/" target="_blank">永夜君王</a> 烟雨江南</li><li><a href="/ou_33100/" target="_blank">我老板是阎王</a> 桃符</li><li><a href="/ou_34142/" target="_blank">逍遥小僵尸</a> 枫公子</li><li><a href="/ou_274/" target="_blank">造化之王</a> 猪三不</li><li><a href="/ou_34924/" target="_blank">奇迹的召唤师</a> 如倾如诉</li><li><a href="/ou_33532/" target="_blank">大劫主</a> 黑山老鬼</li><li><a href="/ou_34130/" target="_blank">伊塔之柱</a> 绯炎</li><li><a href="/ou_35042/" target="_blank">我的时空旅舍</a> 金色茉莉花</li><li><a href="/ou_32674/" target="_blank">仙界科技</a> 想枕头的瞌睡</li><li><a href="/ou_34102/" target="_blank">万能数据</a> 鸿尘逍遥</li><li><a href="/ou_32268/" target="_blank">我的小人国</a> 青衫小白</li><li><a href="/ou_20412/" target="_blank">九星霸体诀</a> 平凡魔术师</li><li><a href="/ou_33522/" target="_blank">洪荒二郎传</a> 言归正传</li><li><a href="/ou_25506/" target="_blank">宦海特种兵</a> 天机变</li><li><a href="/ou_24812/" target="_blank">英雄联盟之决胜巅峰</a> 机器人布里茨</li><li><a href="/ou_27230/" target="_blank">血狱江湖</a> 天雨寒</li><li><a href="/ou_33348/" target="_blank">超品巫师</a> 九灯和善</li><li><a href="/ou_35208/" target="_blank">我的美女主播姐姐</a> 旧生</li><li><a href="/ou_34550/" target="_blank">主神逍遥</a> 神秘道人</li><li><a href="/ou_31470/" target="_blank">永恒圣王</a> 雪满弓刀</li><li><a href="/ou_8330/" target="_blank">全职法师</a> 乱</li><li><a href="/ou_28520/" target="_blank">三界红包群</a> 小教主</li><li><a href="/ou_32254/" target="_blank">超神机械师</a> 齐佩甲</li><li><a href="/ou_34954/" target="_blank">我的女友是恶女</a> 海底漫步者</li><li><a href="/ou_34920/" target="_blank">都市神级少年</a> 姜汁糖水</li><li><a href="/ou_1410/" target="_blank">重生之校园特种兵</a> 大盗零零七</li><li><a href="/ou_33472/" target="_blank">修神外传仙界篇</a> 小段探花</li><li><a href="/ou_8488/" target="_blank">刀碎星河</a> 猪小小</li><li><a href="/ou_34944/" target="_blank">无耻术士</a> 深蓝椰子汁</li><li><a href="/ou_34488/" target="_blank">混在大唐的工科宅男</a> 皮侠客</li><li><a href="/ou_34246/" target="_blank">我的明星老师</a> 夜的光</li><li><a href="/ou_34334/" target="_blank">奶爸的科技武道馆</a> 一梦几千秋</li><li><a href="/ou_34442/" target="_blank">超级基因猎场</a> 丙己戈</li><li><a href="/ou_33552/" target="_blank">网游之神王法则</a> 凌虚月影</li><li><a href="/ou_33350/" target="_blank">回到山沟去种田</a> 二子从周</li><li><a href="/ou_14862/" target="_blank">我从凡间来</a> 想见江南</li><li><a href="/ou_34010/" target="_blank">重启九七</a> 云中怪客</li><li><a href="/ou_34508/" target="_blank">大龙挂了</a> 白雨涵</li><li><a href="/ou_28446/" target="_blank">万域之王</a> 逆苍天</li><li><a href="/ou_34340/" target="_blank">放开那个原始人</a> 长腿大叔</li><li><a href="/ou_34522/" target="_blank">神宠进化</a> 酒池醉</li><li><a href="/ou_22550/" target="_blank">我的绝色总裁老婆</a> 李暮歌</li><li><a href="/ou_7110/" target="_blank">乾坤剑神</a> 尘山</li><li><a href="/ou_32528/" target="_blank">战天龙帝</a> 天岩</li><li><a href="/ou_25144/" target="_blank">我的绝美老婆</a> 旺角黑夜</li><li><a href="/ou_30208/" target="_blank">垂钓诸天</a> 道在不可鸣</li></ul>
+            <div class="clear"></div>
         </div>
-
-    </div>
-</div>
-</body>
-</html>
+        <div class="list">
+            <div class="tit">免费小说最新章节更新</div><ul>
+            <li class="n2"><a href="/ou_26226/" target="_blank">网游之我是武学家</a></li>
+            <li class="n3"><a href="/ou_26226/31261231.html" target="_blank">第一千六百九十四章 超越自己</a></li>
+            <li class="n4">铁牛仙</li>
+            <li class="n5">2018年10月09日</li><li class="n2"><a href="/ou_29350/" target="_blank">成神风暴</a></li>
+            <li class="n3"><a href="/ou_29350/31261230.html" target="_blank">第1781章 教训耀文！（求订阅！）</a></li>
+            <li class="n4">衣食无忧</li>
+            <li class="n5">2018年10月09日</li><li class="n2"><a href="/ou_25274/" target="_blank">位面电梯</a></li>
+            <li class="n3"><a href="/ou_25274/31261227.html" target="_blank">第2047章：王妃是妖孽</a></li>
+            <li class="n4">千翠百恋</li>
+            <li class="n5">2018年10月09日</li><li class="n2"><a href="/ou_34652/" target="_blank">剑霸山河</a></li>
+            <li class="n3"><a href="/ou_34652/31261226.html" target="_blank">第755章 好厉害的手段</a></li>
+            <li class="n4">折天</li>
+            <li class="n5">2018年10月09日</li><li class="n2"><a href="/ou_29026/" target="_blank">湘信有鬼</a></li>
+            <li class="n3"><a href="/ou_29026/31261225.html" target="_blank">第一千肆佰柒拾章 农夫与蛇</a></li>
+            <li class="n4">宝庆十三郎</li>
+            <li class="n5">2018年10月09日</li><li class="n2"><a href="/ou_11126/" target="_blank">从仙侠世界归来</a></li>
+            <li class="n3"><a href="/ou_11126/31261224.html" target="_blank">第2086章 剑冢之地</a></li>
+            <li class="n4">发狂的妖魔</li>
+            <li class="n5">2018年10月09日</li><li class="n2"><a href="/ou_26432/" target="_blank">极品透视保镖(美女的透视保镖)</a></li>
+            <li class="n3"><a href="/ou_26432/31261223.html" target="_blank">第2968章 我怕黑</a></li>
+            <li class="n4">秦长青</li>
+            <li class="n5">2018年10月09日</li><li class="n2"><a href="/ou_34950/" target="_blank">万妖帝主</a></li>
+            <li class="n3"><a href="/ou_34950/31261222.html" target="_blank">第四百二十四章 妖帝对神话</a></li>
+            <li class="n4">任我笑</li>
+            <li class="n5">2018年10月09日</li><li class="n2"><a href="/ou_34450/" target="_blank">氪无不胜</a></li>
+            <li class="n3"><a href="/ou_34450/31261221.html" target="_blank">第581章 +18套装效果</a></li>
+            <li class="n4">沧澜波涛短</li>
+            <li class="n5">2018年10月09日</li><li class="n2"><a href="/ou_25272/" target="_blank">网游之神级机械猎人</a></li>
+            <li class="n3"><a href="/ou_25272/31261217.html" target="_blank">第一八五九章 战半神</a></li>
+            <li class="n4">逆袭的马里奥</li>
+            <li class="n5">2018年10月09日</li><li class="n2"><a href="/ou_32840/" target="_blank">开局一个大天使</a></li>
+            <li class="n3"><a href="/ou_32840/31261220.html" target="_blank">第263章 再占松江城</a></li>
+            <li class="n4">正北方</li>
+            <li class="n5">2018年10月09日</li><li class="n2"><a href="/ou_22146/" target="_blank">神级大镖客</a></li>
+            <li class="n3"><a href="/ou_22146/31261215.html" target="_blank">第1448章 拒绝</a></li>
+            <li class="n4">歪爽</li>
+            <li class="n5">2018年10月09日</li><li class="n2"><a href="/ou_34826/" target="_blank">尚不知他名姓</a></li>
+            <li class="n3"><a href="/ou_34826/31261213.html" target="_blank">第七章 相逢（142）但见五湖风雷起</a></li>
+            <li class="n4">吃碗大锅粥</li>
+            <li class="n5">2018年10月09日</li><li class="n2"><a href="/ou_30412/" target="_blank">狂武神帝</a></li>
+            <li class="n3"><a href="/ou_30412/31261214.html" target="_blank">第2662章 白衣男子！（第三更！）</a></li>
+            <li class="n4">会飞的小迁</li>
+            <li class="n5">2018年10月09日</li><li class="n2"><a href="/ou_28044/" target="_blank">最强医圣</a></li>
+            <li class="n3"><a href="/ou_28044/31261211.html" target="_blank">第一千六百六十二章 骨魔一族</a></li>
+            <li class="n4">左耳思念</li>
+            <li class="n5">2018年10月09日</li><li class="n2"><a href="/ou_34750/" target="_blank">恶魔就在身边</a></li>
+            <li class="n3"><a href="/ou_34750/31261210.html" target="_blank">01125 阿加雷斯（第三更，求月票）</a></li>
+            <li class="n4">汉宝</li>
+            <li class="n5">2018年10月09日</li><li class="n2"><a href="/ou_35226/" target="_blank">神话原生种</a></li>
+            <li class="n3"><a href="/ou_35226/31261207.html" target="_blank">第二百四十七章给他一个理由</a></li>
+            <li class="n4">废纸桥</li>
+            <li class="n5">2018年10月09日</li><li class="n2"><a href="/ou_34904/" target="_blank">这世界的土著好凶猛</a></li>
+            <li class="n3"><a href="/ou_34904/31261206.html" target="_blank">第334章 疯魔之后已是寻常</a></li>
+            <li class="n4">真费事</li>
+            <li class="n5">2018年10月09日</li><li class="n2"><a href="/ou_33486/" target="_blank">这个游戏不简单</a></li>
+            <li class="n3"><a href="/ou_33486/31261205.html" target="_blank">第七章 诚相见</a></li>
+            <li class="n4">我也很绝望</li>
+            <li class="n5">2018年10月09日</li><li class="n2"><a href="/ou_34404/" target="_blank">绝命毒尸</a></li>
+            <li class="n3"><a href="/ou_34404/31261204.html" target="_blank">0633 食人魔</a></li>
+            <li class="n4">十阶浮屠</li>
+            <li class="n5">2018年10月09日</li><li class="n2"><a href="/ou_33328/" target="_blank">俗世地仙</a></li>
+            <li class="n3"><a href="/ou_33328/31261203.html" target="_blank">702章 面子，人心，负担</a></li>
+            <li class="n4">短刃</li>
+            <li class="n5">2018年10月09日</li><li class="n2"><a href="/ou_32260/" target="_blank">电弧中的高级玩家</a></li>
+            <li class="n3"><a href="/ou_32260/31261202.html" target="_blank">第八百五十五章 未来就在眼前</a></li>
+            <li class="n4">大脸猫脸大</li>
+            <li class="n5">2018年10月09日</li><li class="n2"><a href="/ou_34010/" target="_blank">重启九七</a></li>
+            <li class="n3"><a href="/ou_34010/31261201.html" target="_blank">第一二八四章 祭祀，应酬</a></li>
+            <li class="n4">云中怪客</li>
+            <li class="n5">2018年10月09日</li><li class="n2"><a href="/ou_33066/" target="_blank">无限先知</a></li>
+            <li class="n3"><a href="/ou_33066/31261200.html" target="_blank">第八百六十六章 各施手段</a></li>
+            <li class="n4">吴杰超</li>
+            <li class="n5">2018年10月09日</li><li class="n2"><a href="/ou_32894/" target="_blank">飞剑问道</a></li>
+            <li class="n3"><a href="/ou_32894/31261176.html" target="_blank">第十五篇 第二十一章 隔空交锋</a></li>
+            <li class="n4">我吃西红柿</li>
+            <li class="n5">2018年10月09日</li><li class="n2"><a href="/ou_34526/" target="_blank">无敌神龙养成系统</a></li>
+            <li class="n3"><a href="/ou_34526/31261175.html" target="_blank">1033 翻天 上</a></li>
+            <li class="n4">九九三</li>
+            <li class="n5">2018年10月09日</li><li class="n2"><a href="/ou_34110/" target="_blank">都市之少年仙尊</a></li>
+            <li class="n3"><a href="/ou_34110/31261172.html" target="_blank">第1568章 凝神测试【第1更】</a></li>
+            <li class="n4">梦朝南</li>
+            <li class="n5">2018年10月09日</li><li class="n2"><a href="/ou_33412/" target="_blank">斩神绝之君临天下</a></li>
+            <li class="n3"><a href="/ou_33412/31261171.html" target="_blank">第一千一百零七章 你得对我负责</a></li>
+            <li class="n4">殊雨</li>
+            <li class="n5">2018年10月09日</li><li class="n2"><a href="/ou_3244/" target="_blank">蛊真人</a></li>
+            <li class="n3"><a href="/ou_3244/31261170.html" target="_blank">第一百二十八节：兄弟情</a></li>
+            <li class="n4">蛊真人</li>
+            <li class="n5">2018年10月09日</li><li class="n2"><a href="/ou_274/" target="_blank">造化之王</a></li>
+            <li class="n3"><a href="/ou_274/31261166.html" target="_blank">第2586章 多堂会审</a></li>
+            <li class="n4">猪三不</li>
+            <li class="n5">2018年10月09日</li><li class="n2"><a href="/ou_34312/" target="_blank">硬汉的娱乐圈</a></li>
+            <li class="n3"><a href="/ou_34312/31261272.html" target="_blank">新书《流量时代的巨星》已发</a></li>
+            <li class="n4">舞迪</li>
+            <li class="n5">2018年10月09日</li><li class="n2"><a href="/ou_33446/" target="_blank">大数据修仙</a></li>
+            <li class="n3"><a href="/ou_33446/31261271.html" target="_blank">第七百二十七章 藏私</a></li>
+            <li class="n4">陈风笑</li>
+            <li class="n5">2018年10月09日</li><li class="n2"><a href="/ou_35046/" target="_blank">时空之头号玩家</a></li>
+            <li class="n3"><a href="/ou_35046/31261270.html" target="_blank">第244章 大型融合场景献祭任务</a></li>
+            <li class="n4">风上忍</li>
+            <li class="n5">2018年10月09日</li><li class="n2"><a href="/ou_24542/" target="_blank">恶魔囚笼</a></li>
+            <li class="n3"><a href="/ou_24542/31261267.html" target="_blank">第十七章 无趣而又长相普通的人，该怎么办？</a></li>
+            <li class="n4">颓废龙</li>
+            <li class="n5">2018年10月09日</li><li class="n2"><a href="/ou_33502/" target="_blank">狼牙兵王</a></li>
+            <li class="n3"><a href="/ou_33502/31261266.html" target="_blank">第1095章 必须要搞大动作</a></li>
+            <li class="n4">蝼蚁望天</li>
+            <li class="n5">2018年10月09日</li><li class="n2"><a href="/ou_35114/" target="_blank">系统让我去算命</a></li>
+            <li class="n3"><a href="/ou_35114/31261265.html" target="_blank">第337章 我想上学</a></li>
+            <li class="n4">牧三河</li>
+            <li class="n5">2018年10月09日</li><li class="n2"><a href="/ou_33474/" target="_blank">太初</a></li>
+            <li class="n3"><a href="/ou_33474/31261263.html" target="_blank">第一千一百五十五章 面具再现恐怖力【一更】</a></li>
+            <li class="n4">高楼大厦</li>
+            <li class="n5">2018年10月09日</li><li class="n2"><a href="/ou_34130/" target="_blank">伊塔之柱</a></li>
+            <li class="n3"><a href="/ou_34130/31261261.html" target="_blank">第二十六章 古堡</a></li>
+            <li class="n4">绯炎</li>
+            <li class="n5">2018年10月09日</li><li class="n2"><a href="/ou_33126/" target="_blank">人道崛起</a></li>
+            <li class="n3"><a href="/ou_33126/31261262.html" target="_blank">第1099章 鹿神翻脸 龟爷有算</a></li>
+            <li class="n4">山人有妙计</li>
+            <li class="n5">2018年10月09日</li><li class="n2"><a href="/ou_27242/" target="_blank">万道剑尊</a></li>
+            <li class="n3"><a href="/ou_27242/31261257.html" target="_blank">第3535章 出世</a></li>
+            <li class="n4">打死都要钱</li>
+            <li class="n5">2018年10月09日</li><li class="n2"><a href="/ou_32344/" target="_blank">最强齐天大圣</a></li>
+            <li class="n3"><a href="/ou_32344/31261256.html" target="_blank">第1378章 新的光明主宰！</a></li>
+            <li class="n4">九尾玄龟</li>
+            <li class="n5">2018年10月09日</li><li class="n2"><a href="/ou_31482/" target="_blank">花都绝品狂医</a></li>
+            <li class="n3"><a href="/ou_31482/31261255.html" target="_blank">第1321章 不好危险</a></li>
+            <li class="n4">流水狂飙</li>
+            <li class="n5">2018年10月09日</li><li class="n2"><a href="/ou_30554/" target="_blank">穿梭诸天</a></li>
+            <li class="n3"><a href="/ou_30554/31261254.html" target="_blank">第一千二百四十二章 证道成圣</a></li>
+            <li class="n4">大日浴东海</li>
+            <li class="n5">2018年10月09日</li><li class="n2"><a href="/ou_33110/" target="_blank">大自在天尊</a></li>
+            <li class="n3"><a href="/ou_33110/31261253.html" target="_blank">第一千零三十五章：坚持态度！</a></li>
+            <li class="n4">零下5度01</li>
+            <li class="n5">2018年10月09日</li><li class="n2"><a href="/ou_35026/" target="_blank">最强妖锋</a></li>
+            <li class="n3"><a href="/ou_35026/31261251.html" target="_blank">287、C位出道，呵</a></li>
+            <li class="n4">tisword</li>
+            <li class="n5">2018年10月09日</li><li class="n2"><a href="/ou_29086/" target="_blank">天神诀</a></li>
+            <li class="n3"><a href="/ou_29086/31261250.html" target="_blank">第2152章 落入陷阱，埋骨之所</a></li>
+            <li class="n4">太一生水</li>
+            <li class="n5">2018年10月09日</li><li class="n2"><a href="/ou_34892/" target="_blank">全球高武</a></li>
+            <li class="n3"><a href="/ou_34892/31261247.html" target="_blank">第388章 系统再升级</a></li>
+            <li class="n4">老鹰吃小鸡</li>
+            <li class="n5">2018年10月09日</li><li class="n2"><a href="/ou_34306/" target="_blank">七冠王</a></li>
+            <li class="n3"><a href="/ou_34306/31261246.html" target="_blank">第560章 切尔西</a></li>
+            <li class="n4">明巧</li>
+            <li class="n5">2018年10月09日</li><li class="n2"><a href="/ou_35208/" target="_blank">我的美女主播姐姐</a></li>
+            <li class="n3"><a href="/ou_35208/31261245.html" target="_blank">第269章-你还是嫩了点【第四更】</a></li>
+            <li class="n4">旧生</li>
+            <li class="n5">2018年10月09日</li><li class="n2"><a href="/ou_34932/" target="_blank">我的女人你惹不起</a></li>
+            <li class="n3"><a href="/ou_34932/31261244.html" target="_blank">第535章 我是你永远得不到的男人</a></li>
+            <li class="n4">三千浮世</li>
+            <li class="n5">2018年10月09日</li><li class="n2"><a href="/ou_34426/" target="_blank">武侠世界轮回者</a></li>
+            <li class="n3"><a href="/ou_34426/31261243.html" target="_blank">请假</a></li>
+            <li class="n4">墨羽云山</li>
+            <li class="n5">2018年10月09日</li><li class="n2"><a href="/ou_34912/" target="_blank">世界第一第二第三都是我</a></li>
+            <li class="n3"><a href="/ou_34912/31261242.html" target="_blank">第六六八章 亚洲杯最佳射手的进球记录</a></li>
+            <li class="n4">大头文</li>
+            <li class="n5">2018年10月09日</li><li class="n2"><a href="/ou_35224/" target="_blank">喜剧天王</a></li>
+            <li class="n3"><a href="/ou_35224/31261241.html" target="_blank">第四十二章 选演员</a></li>
+            <li class="n4">老徐牧羊</li>
+            <li class="n5">2018年10月09日</li><li class="n2"><a href="/ou_30020/" target="_blank">鬼村扎纸人</a></li>
+            <li class="n3"><a href="/ou_30020/31261240.html" target="_blank">第2410章 金瓣仙莲</a></li>
+            <li class="n4">轻尘一笑</li>
+            <li class="n5">2018年10月09日</li><li class="n2"><a href="/ou_34828/" target="_blank">仙帝归来当奶爸</a></li>
+            <li class="n3"><a href="/ou_34828/31261236.html" target="_blank">第八百一十章唯我独尊</a></li>
+            <li class="n4">拼命的鸡</li>
+            <li class="n5">2018年10月09日</li><li class="n2"><a href="/ou_34124/" target="_blank">我只想当一个安静的学霸</a></li>
+            <li class="n3"><a href="/ou_34124/31261237.html" target="_blank">522章 服务社会</a></li>
+            <li class="n4">术小城</li>
+            <li class="n5">2018年10月09日</li><li class="n2"><a href="/ou_34028/" target="_blank">重生之魔教教主</a></li>
+            <li class="n3"><a href="/ou_34028/31261233.html" target="_blank">今天有点事情，晚点更新</a></li>
+            <li class="n4">封七月</li>
+            <li class="n5">2018年10月09日</li><li class="n2"><a href="/ou_4344/" target="_blank">极品透视</a></li>
+            <li class="n3"><a href="/ou_4344/31261235.html" target="_blank">第四千二百二十六章 舍弃傀儡</a></li>
+            <li class="n4">赤焰圣歌</li>
+            <li class="n5">2018年10月09日</li><li class="n2"><a href="/ou_30406/" target="_blank">重生西游之天篷妖尊</a></li>
+            <li class="n3"><a href="/ou_30406/31261234.html" target="_blank">第3485章 诡异兄弟，同源之莲</a></li>
+            <li class="n4">拼搏的射手</li>
+            <li class="n5">2018年10月09日</li><li class="n2"><a href="/ou_27230/" target="_blank">血狱江湖</a></li>
+            <li class="n3"><a href="/ou_27230/31261232.html" target="_blank">第七十一章：过往真相（1）</a></li>
+            <li class="n4">天雨寒</li>
+            <li class="n5">2018年10月09日</li></ul>
+            <div class="clear"></div>
+        </div>
+        <div class="bottom">本站所有小说为转载作品，所有章节均由网友上传或搜索引擎，转载至OU中文网只是为了宣传本书让更多读者欣赏。<br />
+            本站严格禁止任何和法律相抵触的小说，一经发现立即删除。<br />
+            Copyright © 2014-2018 <a href="http://www.ouoou.com">OU中文网</a> All Rights Reserved.<!--<script>foot();</script>--><div></div></div></div></div>

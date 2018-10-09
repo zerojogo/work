@@ -207,91 +207,92 @@ public class Demo  {
                         }
 
                         List<Map<String,Object>> directorys = (ArrayList)directoryMap.get("directoryList");
+                        if (!CollectionUtils.isEmpty(directorys)){
+                            //    for (Map<String, Object> directoryMap : directorys){
+                            for (int k=0; k<directorys.size(); k++){
+                                //    for (Map.Entry<String,Object> entry : directoryMap.entrySet()){
+                                for (Map.Entry<String,Object> entry : directorys.get(k).entrySet()){
+                                    entry.getKey(); //  原章节url
+                                    entry.getValue();
 
-                        //    for (Map<String, Object> directoryMap : directorys){
-                        for (int k=0; k<directorys.size(); k++){
-                            //    for (Map.Entry<String,Object> entry : directoryMap.entrySet()){
-                            for (Map.Entry<String,Object> entry : directorys.get(k).entrySet()){
-                                entry.getKey(); //  原章节url
-                                entry.getValue();
+                                    String chapterStr = "";
+                                    try {
+                                        chapterStr = readHtml("http://www.ouoou.com/"+entry.getKey());
+                                    }catch (SocketTimeoutException ste){
+                                        ste.printStackTrace();
+                                        Directory directory = new Directory();
+                                        Long directoryId = IdWorkerUtils.getInstance().randomUUID();
+                                        directory.setDirectory_id(directoryId);
+                                        directory.setNovel_id(novelId);
+                                        directory.setSort(sort++);
+                                        directory.setNovel_title(novelTitle);
+                                        directoryList.add(directory);
 
-                                String chapterStr = "";
-                                try {
-                                    chapterStr = readHtml("http://www.ouoou.com/"+entry.getKey());
-                                }catch (SocketTimeoutException ste){
-                                    ste.printStackTrace();
+                                        New_html newHtml = new New_html();
+                                        newHtml.setTry_catch_id(IdWorkerUtils.getInstance().randomUUID());
+                                        newHtml.setDirectory_id(directoryId);
+                                        newHtml.setSort(sort++);
+                                        newHtml.setNovel_title(novelTitle);
+                                        newHtml.setCrt_date(new Date());
+                                        continue;
+                                    }
+                                    catch (Exception e){
+                                        e.printStackTrace();
+
+                                        Directory directory = new Directory();
+                                        Long directoryId = IdWorkerUtils.getInstance().randomUUID();
+                                        directory.setDirectory_id(directoryId);
+                                        directory.setNovel_id(novelId);
+                                        directory.setSort(sort++);
+                                        directory.setNovel_title(novelTitle);
+                                        directoryList.add(directory);
+
+                                        New_html newHtml = new New_html();
+                                        newHtml.setTry_catch_id(IdWorkerUtils.getInstance().randomUUID());
+                                        newHtml.setDirectory_id(directoryId);
+                                        newHtml.setSort(sort++);
+                                        newHtml.setNovel_title(novelTitle);
+                                        newHtml.setCrt_date(new Date());
+                                        continue;
+                                    }
+
+                                    String novelDirectoryContent = chapter(chapterStr);
+                                    //       System.out.println(novelDirectoryContent);
+                                    //       System.out.println("5555555555555555555555555555555555555555555555555555555555555555555555555555555555555555555");
+
+                                    // 生成八位随机不重复数 作为页面名称
+                                    String sss= UUID.randomUUID().toString();
+                                    sss =  sss.substring(0,8)+sss.substring(9,13)+sss.substring(14,18)+sss.substring(19,23)+sss.substring(24);
+                                    String url = sss.substring(0, 12);
+                                    //    System.out.println(s.substring(0, 12));
+
                                     Directory directory = new Directory();
-                                    Long directoryId = IdWorkerUtils.getInstance().randomUUID();
-                                    directory.setDirectory_id(directoryId);
+                                    directory.setDirectory_id(IdWorkerUtils.getInstance().randomUUID());
                                     directory.setNovel_id(novelId);
                                     directory.setSort(sort++);
                                     directory.setNovel_title(novelTitle);
+                                    directory.setNovel_directory((String)entry.getValue());
+                                    directory.setNovel_directory_url(url+".html"); // 使用新生成的数
+                                    //     directory.setNovel_directory_content(novelDirectoryContent);
+                                    directory.setCrt_date(new Date());
                                     directoryList.add(directory);
 
-                                    New_html newHtml = new New_html();
-                                    newHtml.setTry_catch_id(IdWorkerUtils.getInstance().randomUUID());
-                                    newHtml.setDirectory_id(directoryId);
-                                    newHtml.setSort(sort++);
-                                    newHtml.setNovel_title(novelTitle);
-                                    newHtml.setCrt_date(new Date());
-                                    continue;
+                                    // 封装生成页面需要的数据
+                                    Map createHtmlMap = new HashMap();
+                                    createHtmlMap.put("type_name",vo.getKey());
+                                    createHtmlMap.put("type_url",(String)vo.getValue());
+                                    createHtmlMap.put("novel_name",novelName);
+                                    createHtmlMap.put("novel_url",novelUrl);
+                                    createHtmlMap.put("novel_title",novelTitle);
+                                    createHtmlMap.put("novel_directory",(String)entry.getValue());
+                                    createHtmlMap.put("novel_directory_url",url);
+                                    createHtmlMap.put("novel_directory_content",novelDirectoryContent);
+                                    createHtmlList.add(createHtmlMap);
                                 }
-                                catch (Exception e){
-                                    e.printStackTrace();
-
-                                    Directory directory = new Directory();
-                                    Long directoryId = IdWorkerUtils.getInstance().randomUUID();
-                                    directory.setDirectory_id(directoryId);
-                                    directory.setNovel_id(novelId);
-                                    directory.setSort(sort++);
-                                    directory.setNovel_title(novelTitle);
-                                    directoryList.add(directory);
-
-                                    New_html newHtml = new New_html();
-                                    newHtml.setTry_catch_id(IdWorkerUtils.getInstance().randomUUID());
-                                    newHtml.setDirectory_id(directoryId);
-                                    newHtml.setSort(sort++);
-                                    newHtml.setNovel_title(novelTitle);
-                                    newHtml.setCrt_date(new Date());
-                                    continue;
-                                }
-
-                                String novelDirectoryContent = chapter(chapterStr);
-                                //       System.out.println(novelDirectoryContent);
-                                //       System.out.println("5555555555555555555555555555555555555555555555555555555555555555555555555555555555555555555");
-
-                                // 生成八位随机不重复数 作为页面名称
-                                String sss= UUID.randomUUID().toString();
-                                sss =  sss.substring(0,8)+sss.substring(9,13)+sss.substring(14,18)+sss.substring(19,23)+sss.substring(24);
-                                String url = sss.substring(0, 12);
-                                //    System.out.println(s.substring(0, 12));
-
-                                Directory directory = new Directory();
-                                directory.setDirectory_id(IdWorkerUtils.getInstance().randomUUID());
-                                directory.setNovel_id(novelId);
-                                directory.setSort(sort++);
-                                directory.setNovel_title(novelTitle);
-                                directory.setNovel_directory((String)entry.getValue());
-                                directory.setNovel_directory_url(url+".html"); // 使用新生成的数
-                                //     directory.setNovel_directory_content(novelDirectoryContent);
-                                directory.setCrt_date(new Date());
-                                directoryList.add(directory);
-
-                                // 封装生成页面需要的数据
-                                Map createHtmlMap = new HashMap();
-                                createHtmlMap.put("type_name",vo.getKey());
-                                createHtmlMap.put("type_url",(String)vo.getValue());
-                                createHtmlMap.put("novel_name",novelName);
-                                createHtmlMap.put("novel_url",novelUrl);
-                                createHtmlMap.put("novel_title",novelTitle);
-                                createHtmlMap.put("novel_directory",(String)entry.getValue());
-                                createHtmlMap.put("novel_directory_url",url);
-                                createHtmlMap.put("novel_directory_content",novelDirectoryContent);
-                                createHtmlList.add(createHtmlMap);
+                                //    }
                             }
-                            //    }
+                            //   }
                         }
-                        //   }
                     }
                 }
                 if (!CollectionUtils.isEmpty(novelList) && !CollectionUtils.isEmpty(directoryList) && !CollectionUtils.isEmpty(createHtmlList)){
@@ -381,6 +382,9 @@ public class Demo  {
         map.put("novel_title",novelTitle);
         int integer = demo.iDirectoryService.directoryMax(map);*/
         String typeName = directory.substring(directory.indexOf("<p>类")+8,directory.indexOf("</p>"+'\n'+"<p>作"));
+        if (sort != 0){
+            sort = sort +1;
+        }
         for (int n = sort ; n<directorys.length ; n++){
             String str = directorys[n];
             Map<String,Object> directoryMap = new HashMap<>();
