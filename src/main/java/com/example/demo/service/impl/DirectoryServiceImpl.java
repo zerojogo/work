@@ -29,7 +29,7 @@ public class DirectoryServiceImpl extends ServiceImpl<DirectoryMapper, Directory
     @Override
     public Integer directoryMax(Map map){
         EntityWrapper ew = new EntityWrapper<Directory>();
-        ew.setSqlSelect("IFNUll(max(sort),0)");
+        ew.setSqlSelect("IFNUll(max(sort),0)").eq("novel_title",map.get("novel_title"));
         Long i = (Long)iDirectoryService.selectObj(ew);
         //Integer integer = directoryMapper.directoryMax(map);
         return i.intValue();

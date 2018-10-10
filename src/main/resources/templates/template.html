@@ -3,11 +3,55 @@
 <head>
     <meta charset="UTF-8">
     <title>${novel_directory}</title>
+	<LINK href="C:/Users/Administrator/Desktop/zerojogo.css" type="text/css" rel="stylesheet" />
+	<script language="javascript" type="text/javascript" src="C:/Users/Administrator/Desktop/zerojogo.js"></script>
 </head>
 <body>
+<div id="wrapper">
+<div class="header">
+<div class="header_logo"><a href="www.baidu.com" width="250px">logo</a></div>
+<script>list_panel();</script>
+<div class="header_search">
+	<form name=form" action="http://zhannei.baidu.com/cse/search" id="sform" target="_blank">
+		<input type="hidden" name="s" >
+		<input type="text" name="q" class="search" id="wd" baidusug="2">
+		<button id="sss" type="submit">搜索</button>
+	</form>
+
+</div>
+</div>
+<div class="nav">
+<ul>
+<li><a href="http://www.ouoou.com/">首　页</a></li>
+<li><a href="http://www.ouoou.com/xuanhuanxiaoshuo/">玄幻小说</a></li>
+<li><a href="http://www.ouoou.com/xiuzhenxiaoshuo/">修真小说</a></li>
+<li><a href="http://www.ouoou.com/dushixiaoshuo/">都市小说</a></li>
+<li><a href="http://www.ouoou.com/chuanyuexiaoshuo/">穿越小说</a></li>
+<li><a href="http://www.ouoou.com/kongbuxiaoshuo/">恐怖小说</a></li>
+<li><a href="http://www.ouoou.com/wangyouxiaoshuo/">网游小说</a></li>
+<li><a href="http://www.ouoou.com/kehuanxiaoshuo/">科幻小说</a></li>
+<li><a href="http://www.ouoou.com/qitaxiaoshuo/">其它类型</a></li>
+<li><a href="http://www.ouoou.com/lastupdate/">全部小说</a></li>
+<li><a href="http://m.ouoou.com/ou_31534/24430324.html" target="_blank">手机阅读</a></li>
+</ul>
+</div>
+<div class="box_con">
+<div class="con_top">
+<script>textselect();</script>
+当前位置：<a href="http://www.ouoou.com">zerojogo</a> &gt; <a href="/chuanyuexiaoshuo/">${type_name}</a>  &gt; <a href="/ou_31534/" title=${novel_title}+"最新章节列表">${novel_title}</a> &gt;  ${novel_directory}
+</div>
+<div class="bookname">
+	<h1>${novel_directory}</h1>
+	<div class="bottem1">类型：<a href="/chuanyuexiaoshuo/">${type_name}</a> <a href="/ou_31534/">上一章</a>&larr; <a href="/ou_31534/" title="超神特种兵王最新章节列表">章节列表</a> &rarr; <a href="24430324.html">下一章</a> 作者：${novel_name}</div></div>
+<div class="ad"><script>read1();</script></div>
+	
 <div id="content" name="content">
-    <h1>${novel_directory}</h1>
-   ${novel_directory_content}
+	
+  ${novel_directory_content}
+</div>
+<div class="bottem2"><a href="/ou_31534/">上一章</a>&larr; <a href="/ou_31534/" title="超神特种兵王最新章节列表">章节列表</a> &rarr; <a href="24430324.html">下一章</a></div>
+</div>
+</div>
 </div>
 </body>
 </html>

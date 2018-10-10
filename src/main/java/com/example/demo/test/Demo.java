@@ -93,7 +93,7 @@ public class Demo  {
                         continue;
                     }
                     String[] strings = strRead.split("</li><li>");
-                    for (int j = 1; j<strings.length-1  ;j++ ){
+                    for (int j = 1; j<strings.length-1 ;j++ ){
                         String string = strings[j];
                         String reg = "/"+'"';
                         String oldNovelUrl = string.substring(9,string.indexOf(reg));  // 原网站的小说主页链接
@@ -444,7 +444,7 @@ public class Demo  {
         try {
             Configuration configuration = new Configuration();
             //    configuration.setDirectoryForTemplateLoading(new File("E:\\MyProject\\src\\main\\resources\\templates"));
-            configuration.setDirectoryForTemplateLoading(new File("E:\\mywork"));
+            configuration.setDirectoryForTemplateLoading(new File("src/main/resources/templates/"));
             configuration.setObjectWrapper(new DefaultObjectWrapper());
             configuration.setDefaultEncoding("UTF-8");
             List<New_html> newHtmlList = new ArrayList<>();
@@ -457,11 +457,11 @@ public class Demo  {
 
 
 
-                File file = new File("E:\\mywork\\template\\"+map.get("novel_url"));
+                File file = new File("src/main/resources/templates/"+map.get("novel_url"));
                 if (!file.exists() && !file.isDirectory()){
                     file.mkdir();
                 }else {
-                    Writer writer = new OutputStreamWriter(new FileOutputStream("E:\\mywork\\template\\"+map.get("novel_url")+"\\"+map.get("novel_directory_url")+".html"),"UTF-8");
+                    Writer writer = new OutputStreamWriter(new FileOutputStream("src/main/resources/templates/"+map.get("novel_url")+"\\"+map.get("novel_directory_url")+".html"),"UTF-8");
                     template.process(map,writer);
 
                     System.out.println("生成成功");
@@ -480,7 +480,7 @@ public class Demo  {
         try {
             Configuration configuration = new Configuration();
             //    configuration.setDirectoryForTemplateLoading(new File("E:\\MyProject\\src\\main\\resources\\templates"));
-            configuration.setDirectoryForTemplateLoading(new File("E:\\mywork"));
+            configuration.setDirectoryForTemplateLoading(new File("src/main/resources/templates/"));
             configuration.setObjectWrapper(new DefaultObjectWrapper());
             configuration.setDefaultEncoding("UTF-8");
             List<New_html> newHtmlList = new ArrayList<>();
@@ -488,15 +488,15 @@ public class Demo  {
             Template template = configuration.getTemplate("index.html");
 
 
-            File file = new File("E:\\mywork\\template\\"+createNovelHtmlMap.get("novel_url"));
+            File file = new File("src/main/resources/templates/"+createNovelHtmlMap.get("novel_url"));
             if (!file.exists() && !file.isDirectory()){
                 file.mkdir();
-                Writer writer = new OutputStreamWriter(new FileOutputStream("E:\\mywork\\template\\"+createNovelHtmlMap.get("novel_url")+"\\"+createNovelHtmlMap.get("novel_url")+".html"),"UTF-8");
+                Writer writer = new OutputStreamWriter(new FileOutputStream("src/main/resources/templates/"+createNovelHtmlMap.get("novel_url")+"\\"+createNovelHtmlMap.get("novel_url")+".html"),"UTF-8");
                 template.process(createNovelHtmlMap,writer);
 
                 System.out.println("生成成功");
             }else {
-                Writer writer = new OutputStreamWriter(new FileOutputStream("E:\\mywork\\template\\"+createNovelHtmlMap.get("novel_url")+"\\"+createNovelHtmlMap.get("novel_url")+".html"),"UTF-8");
+                Writer writer = new OutputStreamWriter(new FileOutputStream("src/main/resources/templates/"+createNovelHtmlMap.get("novel_url")+"\\"+createNovelHtmlMap.get("novel_url")+".html"),"UTF-8");
                 template.process(createNovelHtmlMap,writer);
 
                 System.out.println("生成成功");
