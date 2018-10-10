@@ -78,9 +78,7 @@ public class Demo  {
                 // 截取单个分类信息
                 String str = strLi[i];
                 Map<String,Object> typeMap = type(str);
-                List<Novel> novelList = new ArrayList<Novel>();
-                List<Directory> directoryList = new ArrayList<>();
-                List<Map<String,Object>> createHtmlList = new ArrayList<Map<String, Object>>();
+
                 for (Map.Entry<String,Object> vo : typeMap.entrySet()){
                     vo.getKey();   // ouoou  typeName 不准确
                     vo.getValue();  // ouoot typeUrl
@@ -93,11 +91,15 @@ public class Demo  {
                         continue;
                     }
                     String[] strings = strRead.split("</li><li>");
+
                     for (int j = 1; j<strings.length-1 ;j++ ){
                         String string = strings[j];
                         String reg = "/"+'"';
                         String oldNovelUrl = string.substring(9,string.indexOf(reg));  // 原网站的小说主页链接
 
+                        List<Novel> novelList = new ArrayList<Novel>();
+                        List<Directory> directoryList = new ArrayList<>();
+                        List<Map<String,Object>> createHtmlList = new ArrayList<Map<String, Object>>();
 
                         String novelTitle = string.substring(string.indexOf("target="+'"'+"_blank"+'"'+">")+16,string.indexOf("</a>"));
                         String novelName = string.substring(string.indexOf("</a>")+4);
@@ -293,21 +295,23 @@ public class Demo  {
                             }
                             //   }
                         }
+                        if (!CollectionUtils.isEmpty(novelList) && !CollectionUtils.isEmpty(directoryList) && !CollectionUtils.isEmpty(createHtmlList)){
+                            demo.iNovelService.insertBatch(novelList);
+                            System.out.println("类型"+i+"执行完成");
+                        }
+                        if (!CollectionUtils.isEmpty(directoryList)){
+                            demo.iDirectoryService.insertBatch(directoryList);
+                            System.out.println("正文执行成功");
+                        }
+                        if (!CollectionUtils.isEmpty(createHtmlList)){
+                            createHtml(createHtmlList);
+                            System.out.println("页面生成成功");
+                        }
+                        System.out.println("第一个"+i+"执行完成");
                     }
+
                 }
-                if (!CollectionUtils.isEmpty(novelList) && !CollectionUtils.isEmpty(directoryList) && !CollectionUtils.isEmpty(createHtmlList)){
-                    demo.iNovelService.insertBatch(novelList);
-                    System.out.println("类型"+i+"执行完成");
-                }
-                if (!CollectionUtils.isEmpty(directoryList)){
-                    demo.iDirectoryService.insertBatch(directoryList);
-                    System.out.println("正文执行成功");
-                }
-                if (!CollectionUtils.isEmpty(createHtmlList)){
-                    createHtml(createHtmlList);
-                    System.out.println("页面生成成功");
-                }
-                System.out.println("第一个"+i+"执行完成");
+
             }
 
         }catch (Exception e){
@@ -495,12 +499,12 @@ public class Demo  {
                 template.process(createNovelHtmlMap,writer);
 
                 System.out.println("生成成功");
-            }else {
+            }/*else {
                 Writer writer = new OutputStreamWriter(new FileOutputStream("src/main/resources/templates/"+createNovelHtmlMap.get("novel_url")+"\\"+createNovelHtmlMap.get("novel_url")+".html"),"UTF-8");
                 template.process(createNovelHtmlMap,writer);
 
                 System.out.println("生成成功");
-            }
+            }*/
 
             /*  demo.iNew_htmlService.insertBatch(newHtmlList);*/
 
